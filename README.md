@@ -12,3 +12,11 @@ Cleaning script for custom firmware. Replacing files ringtones, butanimatsii, co
 - Nexus 9
 
 ## Description
+## Thanks
+Thanks to [ ] (https://github.com/) for the script [based](https://github.com//).
+## Usage
+### Donate
+https://www.paypal.me/IgorDyatlov
+
+### License
+All files in this project are under the [LICENSE.md](LICENSE.md) license unless otherwise stated in the file or by a dependency's license file.
