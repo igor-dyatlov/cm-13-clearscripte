@@ -14,45 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-### FILE INFO:
-#
-# AROMA Installer 2.70 - AROMA Installer Test Script Configuration
-#       (c) 2011-2012 by Ahmad Amarullah
-#           amarullz - xda-developers
-#           http://www.amarullz.com/
-#
-#       Binary Version  : 3.00
-#       Binary Codename : Flamboyan
-#
-### INFO:
-#
-# * AROMA Resource Dir  = META-INF/com/google/android/aroma
-#
-# * AROMA Temporary Dir = /tmp/aroma/
-#
-# * About Icon          = @alert - show <AROMA Resource Dir>/icons/alert.png
-#                         or if theme used it will find <themedir>/icon.alert.png
-#                         you can still access it via "icons/alert"
-#
-# * dp                  = Device Pixelate. WVGA/QHD = 3, HVGA = 2.
-#                         dp calculated with = round(min(width,height) / 160)
-#
-###
-
-##
-# Fix Colorspace Issue
-#
-# For device which have a problem with color ( not display the correct color )
-# try to set "force_colorspace" with ini_set. It may caused by wrong framebuffer
-# information that passed by kernel into framebuffer device.
-#
-# You can use one of following values:
-#   "rgba", "abgr", "argb", "bgra"
-#
-# NOTE: It must be in top most script, or you will got the color flicker
-#
-#ini_set("force_colorspace","argb");
-#
 
 ##
 # Forcing Device Pixelate Size
@@ -91,6 +52,10 @@
 # ini_set("customkeycode_menu",   "229");
 # ini_set("customkeycode_back",   "158");
 #
+
+fontresload("0", "ttf/Roboto-Regular.ttf", "12");
+fontresload("1", "ttf/Roboto-Regular.ttf", "14");
+theme("material_green");
 
 ##
 # Initializing Rom Information
@@ -132,38 +97,18 @@ anisplash(
 #
 # Set Small Font to Support all fonts
 #
-fontresload( "0", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "12" );
-fontresload( "1", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "14" );
+#fontresload( "0", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "12" );
+#fontresload( "1", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "14" );
 #
 # INCLUDE EXAMPLE = Language Selection & Form Example
 #
 include("language_select.edify");
-include("custombox_test.edify");
-
-
-###################################################################################################################
-#
-# SHOW LANGUAGE TEST MULTILINE
-#
-viewbox(
-  #-- Title
-    lang("langtest.title"),  #-- you can use lang("langtest.title") function or directly in string "<~langtest.title>"
-
-  #-- Text
-    "<~langtest.multiline>",
-
-  #-- Icon
-    "@info"
-);
-
-eval("alert(\"On Eval Function\",\"This Alert was executed from Eval Function...\", \"@info\");");
-
+#include("custombox_test.edify");
 
 ###################################################################################################################
 #
 # STEP 1 - SELECT THEME
 #
-theme("material_green");
 
 ###################################################################################################################
 #
