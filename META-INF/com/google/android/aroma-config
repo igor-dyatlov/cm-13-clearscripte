@@ -137,64 +137,10 @@ viewbox(
 );
 
 
-###################################################################################################################
-#
-# STEP 3 - LICENSE
-#
-agreebox(
-  #-- Title
-    "<~terms.title>",
-
-  #-- Subtitle / Description
-    "<~terms.desc>",
-
-  #-- Icon
-    "@license",
-
-  #-- Text Content ( Read from <AROMA Resource Dir>/license.txt )
-    resread("license.txt"),
-
-  #-- Checkbox Text
-    "<~terms.check>",
-
-  #-- Unchecked Alert Message
-    "<~terms.confirm>"
-);
-
-
-###################################################################################################################
-#
-# STEP 4 - CHANGELOG
-#
-textbox(
-  #-- Title
-    "<~changelog.title>",
-
-  #-- Subtitle
-    "<~changelog.desc>",
-
-  #-- Icon
-    "@update",
-
-  #-- Arg 4
-    resread("changelog.txt")
-);
-
-##
-##-- Back To English :D - and Use Roboto-Regular.ttf
-##
-alert("Back To English","OK, Multilanguage demo ends here... It will use english now...", "@info");
-loadlang("langs/en.lang");
-fontresload( "0", "ttf/Roboto-Regular.ttf", "12" );
-fontresload( "1", "ttf/Roboto-Regular.ttf", "14" );
-##
-##
-
-
 #
 # Save Demo Menu Position
 #
-gotolabel("aroma_installer_demo_pos");
+#gotolabel("aroma_installer_demo_pos");
 
 ###################################################################################################################
 #
