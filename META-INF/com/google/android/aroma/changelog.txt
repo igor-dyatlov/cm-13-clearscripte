@@ -1,3 +1,8 @@
+<b><#selectbg_g>0.2.1 - 2016-03-14</#></b>
+<*>Added fixes in aroma-config</*>
+<*>Added fixes in updater-script</*>
+<*>Set ROBOTO as Default True Type Font</*>
+
 <b><#selectbg_g>0.2 - 2016-03-14</#></b>
 <*>Added fixes in aroma-config</*>
 

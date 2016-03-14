@@ -1,4 +1,3 @@
-﻿### LICENSE:
 #
 # Copyright (C) 2011 Ahmad Amarullah ( http://amarullz.com/ )
 #
@@ -15,44 +14,6 @@
 # limitations under the License.
 #
 
-##
-# Forcing Device Pixelate Size
-#  defaut: floor( min( width, height ) / 160 )
-#
-# Usefull for tablet device, if interface was too big, you can
-# force dp size for smaller UI size.
-#
-#-------- Uncomment one of this to use custom dp size:
-#
-# ini_set("dp","1"); #-- LDPI ( 240x320 / QVGA )
-# ini_set("dp","2"); #-- MDPI ( 340x480 / HVGA )
-# ini_set("dp","3"); #-- HDPI ( 480x800 / WVGA )
-# ini_set("dp","4");
-# ini_set("dp","5");
-#
-
-##
-# Custom Key Code - Usefull For Some Device which not used
-#                   Standard key code for up/down/select/back/menu
-#
-# You can capture the keycode in
-# recovery using "aroma-keycapture-flashable.zip" Available in
-# AROMA Installer Thread.
-#
-# Press some key when it run, it will return key code,
-# that key can override up/down/select/back/menu actions in
-# AROMA Installer, you can even set your home key for up, or
-# volume down for select item
-#
-#-------- Uncomment & Modify this Code:
-#
-# ini_set("customkeycode_up",     "115");
-# ini_set("customkeycode_down",   "114");
-# ini_set("customkeycode_select", "116");
-# ini_set("customkeycode_menu",   "229");
-# ini_set("customkeycode_back",   "158");
-#
-
 ###############################################################################
 #
 # SETTING THEME & FONT
@@ -63,19 +24,25 @@ fontresload("0", "ttf/Roboto-Regular.ttf", "12");
 fontresload("1", "ttf/Roboto-Regular.ttf", "14");
 theme("material_green");
 
-##
-# Initializing Rom Information
+###############################################################################
 #
-ini_set("rom_name",             "AROMA Test Zip");
-ini_set("rom_version",          "3.00");
-ini_set("rom_author",           "amarullz");
-ini_set("rom_device",           "Any Device");
-ini_set("rom_date",             "Feb, 28 2015");
+# INITIALIZING ROM INFOMATION
+#
+###############################################################################
+
+ini_set("rom_name",             "Nexusfication");
+ini_set("rom_version",          "0.2.1");
+ini_set("rom_author",           "Igor Dyatlov");
+ini_set("rom_device",           "Nexus Device");
+ini_set("rom_date",             "Mar, 14 2016");
 
 
-##
-# Show Simple Splash
+###############################################################################
 #
+# SHOW SIMPLE SPLASH
+#
+###############################################################################
+
 splash(
 #  #-- Duration 2000ms / 2 seconds
     2000,
@@ -84,9 +51,12 @@ splash(
     "sample"
 );
 
-##
-# Show Animated Splash
+###############################################################################
 #
+# SHOW ANIMATED SPLASH
+#
+###############################################################################
+
 anisplash(
 #  #-- Number of Loop
     4,
@@ -100,16 +70,13 @@ anisplash(
     "splash/a6", 30
 );
 
+###############################################################################
 #
-# Set Small Font to Support all fonts
+# LANGUAGE SELECTION
 #
-#fontresload( "0", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "12" );
-#fontresload( "1", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "14" );
-#
-# INCLUDE EXAMPLE = Language Selection & Form Example
-#
+###############################################################################
+
 include("language_select.edify");
-#include("custombox_test.edify");
 
 ###############################################################################
 #
@@ -138,13 +105,6 @@ viewbox(
   #-- Icon
     "@welcome"
 );
-
-###################################################################################################################
-#                                                                                                                 #
-#                                           INSTALLATION DEMO                                                     #
-#                                                                                                                 #
-###################################################################################################################
-
 
 ###################################################################################################################
 #
@@ -461,8 +421,10 @@ ini_set("icon_next", "@finish");
 
 ###############################################################################
 #
-# STEP 11 - FINISH MESSAGE, Add Checkbox to Reboot or No. Save in "reboot_it" variable
+# FINISH MESSAGE
 #
+###############################################################################
+
 # You can use return value or "reboot_it" variable to retrive checkbox value
 # Example:
 # if (checkviewbox(....)=="1" then
@@ -504,5 +466,3 @@ then
   #
   reboot("onfinish");
 endif;
-
-#---- FINISH

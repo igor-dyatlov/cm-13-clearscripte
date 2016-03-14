@@ -272,8 +272,10 @@ set_metadata("/system/etc/gps.conf", "uid", 0, "gid", 0, "mode", 0755, "capabili
 set_metadata("/system/media/bootanimation.zip", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/media/audio", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/vendor/media", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+
 ui_print("Unmounting system...");
 run_program("/sbin/busybox", "umount", "/system");
+
 ui_print("Installation complete");
 #-- Finish
 ui_print("@Finished");
