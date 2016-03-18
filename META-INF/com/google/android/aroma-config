@@ -31,10 +31,10 @@ theme("material_green");
 ###############################################################################
 
 ini_set("rom_name",             "Nexusfication");
-ini_set("rom_version",          "0.2.1");
+ini_set("rom_version",          "0.3");
 ini_set("rom_author",           "Igor Dyatlov");
 ini_set("rom_device",           "Nexus Device");
-ini_set("rom_date",             "Mar, 14 2016");
+ini_set("rom_date",             "Mar, 18 2016");
 
 
 ###############################################################################
@@ -106,10 +106,12 @@ viewbox(
     "@welcome"
 );
 
-###################################################################################################################
+###############################################################################
 #
-# STEP 6 - SHOW MENUBOX - INSTALLATION TYPE
+# SHOW MENUBOX
 #
+###############################################################################
+
 menubox(
   #-- Title
     "Installation Type",
@@ -120,155 +122,96 @@ menubox(
   #-- Icon
     "@install",
 
-  #-- Will be saved in /tmp/aroma/type.prop
-    "type.prop",
+  #-- Will be saved in /tmp/aroma/menu.prop
+    "menu.prop",
 
   #-------------------------+-----------------[ Menubox Items ]-------------------------+---------------#
   # TITLE                   |  SUBTITLE                                                 |   Item Icons  #
   #-------------------------+-----------------------------------------------------------+---------------#
 
-	"Default",                "Will install default features and configurations",          "@install",      #-- selected = 1
-    "Typical",                "All recommended features will be installed",                "@default",      #-- selected = 2
-    "Minimalist",             "Only required features will be installed",                  "@apps",         #-- selected = 3
-    "Custom",                 "Choose which program or mod features you want to installed. "+
-	                          "Recommended for advanced users",                            "@customize"     #-- selected = 4
+	  "Change Boot Animation",          "Select Boot Animation",                           "@install",      #-- selected = 1
+    "Change Sound",                   "Select Sound",                                    "@default",      #-- selected = 2
+    "Select boot",                    "All recommended features will be installed",      "@default"       #-- selected = 3
 );
 
 
-###################################################################################################################
+###############################################################################
 #
-# STEP 7 - SELECT MAIN MODS
+# SELECT BOOTANIMATION
 #
-if (prop("type.prop","selected")=="1") then
-  #-- IF "Default" Installation, don't show configuration, then write default mods.prop
-  #-- NOTE: mods.prop should exists, or updater-script will error
-  writetmpfile(
-    #-- Prop file will write to /tmp/aroma/mods.prop
-	  "mods.prop",
+###############################################################################
 
-	#-- Default Values
-	  "selected.1=1\n"+    #-- Default Kernel = 2.6.0 Kernel
-	  "selected.2=1\n"+    #-- Default Boot Animation = Default Nexus S
-	  "selected.3=1\n"+    #-- Default SD-EXT Mods = Generic APP2SD
-	  "selected.4=1\n"+    #-- Default IME = Android IME
-	  "selected.5=1\n"     #-- Default Camera = Android Generic Camera
-  );
-else
-  #-- IF Not "Default" Show Main Features Selection
+if (prop("menu.prop","selected")!="1") then
+
   selectbox(
     #-- Title
-      "Main Features",
+      "Select Boot Animation",
 
     #-- Sub Title
-      "Please select installer theme that you want to use in this installation test:",
+      "Please select <b><#selectbg_g>"+sysprop("ro.product.device")+"</#></b>\n installer :",
 
     #-- Icon: <AROMA Resource Dir>/icons/default.png or <ThemeDir>/icon.default.png
       "@default",
 
-    #-- Will be saved in /tmp/aroma/mods.prop
-      "mods.prop",
+    #-- Will be saved in /tmp/aroma/bootamimation".prop
+      "bootamimation.prop",
 
 	  #-----------------------------------[ Selectbox With Groups ]----------------------------------#
 	  # TITLE            |  SUBTITLE                                                 | Initial Value #
 	  #------------------+-----------------------------------------------------------+---------------#
 
-	  "Kernel",                "",                                                            2,  #-- Group 1. key = "selected.1"
-	    "2.6.8 Kernel",        "Stable amarullz kernel 2.6.8",                                1,      #-- selected.1 = 1
-		"3.0.0 Kernel",        "Experimental amarullz kernel 3.0.0",                          0,      #-- selected.1 = 2
-		"AROMA Kernel",        "High performance amarullz AROMA kernel, base on 2.6.8",       0,      #-- selected.1 = 3
+      "Boot Animation",             "",                                                            2,   #-- Group 2. key = "selected.1"
+	    "Default Nexus 5",            "Default Nexus S Android boot animation",                      0,      #-- selected.1 = 1
+		  "Default Nexus 7",            "AROMA Earthquake logo boot animation",                        0,      #-- selected.1 = 2
+		  "Default Gaxaly Nexus",       "Generic white HTC Quitely Briliant boot animation",           0,      #-- selected.1 = 3
+      "No Change",                  "This option does not change Boot Animation",                  1
 
-      "Boot Animation",        "",                                                            2,  #-- Group 2. key = "selected.2"
-	    "Default Nexus S",     "Default Nexus S Android boot animation",                      1,      #-- selected.2 = 1
-		"AROMA Boot Animation","AROMA Earthquake logo boot animation",                        0,      #-- selected.2 = 2
-		"HTC Generic",         "Generic white HTC Quitely Briliant boot animation",           0,      #-- selected.2 = 3
-		"Old Android",         "Old Android logo boot animation",                             0,      #-- selected.2 = 4
+	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
+  );
+endif;
 
-	  "SD-EXT Mods",           "",                                                            2,  #-- Group 3. key = "selected.3"
-	    "Generic APP2SD",      "Generic app2sd, all non-system apk in sd-ext",                1,      #-- selected.3 = 1
-		"AD2SDX",              "All non-system files in sd-ext",                              0,      #-- selected.3 = 2
-		"Data2SD",             "All data files in sd-ext",                                    0,      #-- selected.3 = 3
+###############################################################################
+#
+# SELECT SOUND
+#
+###############################################################################
 
-	  "Input Method",          "",                                                            2,  #-- Group 3. key = "selected.3"
-	    "Android IME",         "Android AOSP Keyboard",                                       1,      #-- selected.3 = 1
-		"HTC IME",             "HTC IME with T9 Support",                                     0,      #-- selected.3 = 2
+if (prop("menu.prop","selected")!="2") then
 
-	  "Camera",                "",                                                            2,  #-- Group 3. key = "selected.4"
-	    "Android Camera",      "Android AOSP Generic Camera",                                 1,      #-- selected.4 = 1
-		"HTC Camera 3.5",      "New and No FC Error, but No 720p Video Recording",            0,      #-- selected.4 = 2
-		"HTC Camera 3.0",      "Old Camera With 720p Recording, but FC Error in Preview.",    0       #-- selected.4 = 3
+  selectbox(
+    #-- Title
+      "Select Sound",
+
+    #-- Sub Title
+      "Please select installer :",
+
+    #-- Icon: <AROMA Resource Dir>/icons/default.png or <ThemeDir>/icon.default.png
+      "@default",
+
+    #-- Will be saved in /tmp/aroma/sound".prop
+      "sound.prop",
+
+	  #-----------------------------------[ Selectbox With Groups ]----------------------------------#
+	  # TITLE            |  SUBTITLE                                                 | Initial Value #
+	  #------------------+-----------------------------------------------------------+---------------#
+
+      "Sound Stock",                "",                                                            2,   #-- Group 2. key = "selected.1"
+	    "Default Nexus 5",            "Default Nexus S Android boot animation",                      0,      #-- selected.1 = 1
+      "No Change",                  "This option does not change Boot Animation",                  1
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );
 endif;
 
 
-###################################################################################################################
+###############################################################################
 #
-# STEP 8 - CUSTOMIZE YOUR INSTALLATION
+# CUSTOMIZE YOUR INSTALLATION
 #
-if (prop("type.prop","selected")!="4") then
-  #-- IF Installation type not "Custom", don't show custom setup, then write default customize.prop
-  #-- NOTE: customize.prop should exists, or updater-script will error
-  writetmpfile(
-    #-- Prop file will write to /tmp/aroma/customize.prop
-	  "customize.prop",
+###############################################################################
 
-	#-- Default Values ( item.x.x = value. value=1 selected, value=0 un-selected )
-	  iif(
-	    #-- If Minimalist
-	    prop("type.prop","selected")=="3",
+if (prop("menu.prop","selected")!="3") then
 
-		#-- True Value (minimal install)
-		  "item.1.1=0\n"+    #-- Facebook
-		  "item.1.2=0\n"+    #-- Twitter
-		  "item.1.3=0\n"+    #-- AdobeFlashPlayer
-		  "item.1.4=0\n"+    #-- AdobeReader
-
-		  "item.2.1=0\n"+    #-- EStrongFilemanager
-		  "item.2.2=0\n"+    #-- BackupEverything
-		  "item.2.3=0\n"+    #-- DaemonController
-		  "item.2.4=0\n"+    #-- DSPManager
-
-		  "item.3.1=0\n"+    #-- BookmarksWidget
-		  "item.3.2=0\n"+    #-- CalculatorWidget
-		  "item.3.3=0\n"+    #-- CalendarWidget
-		  "item.3.4=0\n"+    #-- ContactWidget
-		  "item.3.5=0\n"+    #-- FMRadioWidget
-		  "item.3.6=0\n"+    #-- MusicWidget
-		  "item.3.7=0\n"+    #-- QuickLaunchWidget
-		  "item.3.8=0\n"+    #-- TrendsWidget
-		  "item.3.9=0\n"+    #-- GenieWidget
-
-		  "item.4.1=0\n"+    #-- HTCSkins
-		  "item.4.2=0\n"     #-- MoreSkins
-		,
-		#-- False Value (non minimal install)
-		  "item.1.1=1\n"+    #-- Facebook
-		  "item.1.2=1\n"+    #-- Twitter
-		  "item.1.3=0\n"+    #-- AdobeFlashPlayer
-		  "item.1.4=0\n"+    #-- AdobeReader
-
-		  "item.2.1=1\n"+    #-- EStrongFilemanager
-		  "item.2.2=0\n"+    #-- BackupEverything
-		  "item.2.3=1\n"+    #-- DaemonController
-		  "item.2.4=0\n"+    #-- DSPManager
-
-		  "item.3.1=0\n"+    #-- BookmarksWidget
-		  "item.3.2=0\n"+    #-- CalculatorWidget
-		  "item.3.3=0\n"+    #-- CalendarWidget
-		  "item.3.4=1\n"+    #-- ContactWidget
-		  "item.3.5=1\n"+    #-- FMRadioWidget
-		  "item.3.6=1\n"+    #-- MusicWidget
-		  "item.3.7=1\n"+    #-- QuickLaunchWidget
-		  "item.3.8=1\n"+    #-- TrendsWidget
-		  "item.3.9=0\n"+    #-- GenieWidget
-
-		  "item.4.1=1\n"+    #-- HTCSkins
-		  "item.4.2=0\n"     #-- MoreSkins
-	  )
-  );
-else
-  #-- IF Installation type = "Custom" Show Customize Selection
   checkbox(
     #-- Title
       "Customize Your Installation",
@@ -280,40 +223,56 @@ else
     #-- Icon: <AROMA Resource Dir>/icons/personalize.png or <ThemeDir>/icon.personalize.png
       "@personalize",
 
-    #-- Will be saved in /tmp/aroma/customize.prop
-      "customize.prop",
+    #-- Will be saved in /tmp/aroma/delete.prop
+      "delete.prop",
 
 	  #------------------------------------------------[ Checkbox Without Group ]----------------------------------------------#
 	  # TITLE            |  SUBTITLE                                                                           | Initial Value #
 	  #------------------+-------------------------------------------------------------------------------------+---------------#
 
-	  "Applications",         "",                                                                                  2,  #-- Group 1. key = "item.1.x"
-	    "Facebook",           "Share and stay connected with your friends with the Facebook for Android app",      1,      #-- item.1.1 = Selected by default
-		"Twitter",            "Follow your interests: instant updates from your friends",                          1,      #-- item.1.2 = Selected by default
-	    "Adobe FlashPlayer",  "Bring the FULL web to your device with Flash Player",                               0,      #-- item.1.3 = Un-Selected by default
-	    "Adobe Reader",       "The global standard for reliably viewing and sharing PDF documents",                0,      #-- item.1.4 = Un-Selected by default
+	  "Applications",                  "Choose apps which you want to remove",     2,  #-- Group 1. key = "item.1.x"
+	    "Browser",                     "<b>Stock/AOSP Browser</b>",                1,      #-- item.1.2 = Selected by default
+		  "CameraStock",                 "<b>Stock/AOSP/Moto Camera</b>",            1,      #-- item.1.5 = Selected by default
+	    "ClockStock",                  "<b>Stock/AOSP Clock</b>",                  1,      #-- item.1. = Selected by default
+	    "CMMusic",                     "<b>CyanogenMod Music</b>",                 1,      #-- item.1. = Selected by default
+      "Email",                       "<b>Stock/AOSP Email</b>",                  1,      #-- item.1. = Selected by default
+      "Gallery",                     "<b>Stock/AOSP Gallery</b>",                1,      #-- item.1. = Selected by default
+      "KeyboardStock",               "<b>Stock/AOSP Keyboard</b>",               1,      #-- item.1. = Selected by default
+      "Launcher",                    "<b>Stock/AOSP Launcher(s)</b>",            1,      #-- item.1. = Selected by default
 
-	  "Tools & File Manager", "",                                                                                  2,  #-- Group 2. key = "item.2.x"
-	    "EStrong Filemanager","All-in-one File manager, Application manager, Task killer, "+
-		                      "Dropbox client & ftp client",                                                       1,      #-- item.2.1 = Selected by default
-		"Backup Everything",  "Makes it easy to backup/restore your files from your Android",                      0,      #-- item.2.2 = Un-Selected by default
-		"Daemon Controller",  "Control your CPU, Overclock, Governoor, Voltage an many more",                      1,      #-- item.2.3 = Selected by default
-		"DSPManager",         "Independent equalizer for the headphone, speaker, and bluetooth.",                  0,      #-- item.2.4 = Un-Selected by default
+	  "Tools & File Manager",          "",                                         2,  #-- Group 1. key = "item.1.x"
+	    "CMFileManager",               "<b>CyanogenMod File Manager</b>",          1,      #-- item.1. = Selected by default
+      "LockClock",                   "<b>Lock Clock</b>",                        1,      #-- item.1. = Selected by default
+      "MMS",                         "<b>Stock/AOSP MMS</b>",                    1,      #-- item.1. = Selected by default
+		  "CMAudioFX",                   "<b>CyanogenMod AudioFX</b>",               1,      #-- item.1. = Selected by default
+      "PicoTTS",                     "<b>Stock/AOSP Text-to-Speech</b>",         1,      #-- item.1. = Selected by default
+      "Provision",                   "<b>Provision application</b>",             1,      #-- item.1. = Selected by default
+      "SimToolKit",                  "<b>Stock/AOSP Sim ToolKit</b>",            1,      #-- item.1. = Selected by default
+      "Studio",                      "<b>Stock/AOSP Movie Studio</b>",           1,      #-- item.1. = Selected by default
+      "SykoPath",                    "<b>SykoPath Layers Manager</b>",           1,      #-- item.1. = Selected by default
+      "Terminal",                    "<b>Terminal</b>",                          1,      #-- item.1. = Selected by default
+      "Themes",                      "<b>CyanogenMod Theme Engine</b>",          1,      #-- item.1. = Selected by default
+      "WhisperPush",                 "<b>WhisperPush</b>",                       1,      #-- item.1. = Selected by default
 
-	  "Widgets",              "",                                                                                  2,  #-- Group 3. key = "item.3.x"
-	    "Bookmarks Widget",   "Your browsing bookmarks widget",                                                    0,      #-- item.3.1 = Selected by default
-        "Calculator Widget",  "Calculator on your Home Screen with selectable skins",                              0,      #-- item.3.2 = Selected by default
-        "Calendar Widget",    "Calendar and Agenda on your Home Screen",                                           0,      #-- item.3.3 = Selected by default
-        "Contact Widget",     "Show your favorite contacts in slick HTC Sense Contact Widgets",                    1,      #-- item.3.4 = Selected by default
-        "FM Radio Widget",    "Access your FM Radio directly from your Home Screen",                               1,      #-- item.3.5 = Selected by default
-        "Music Widget",       "Music Player on Home Screen Widget",                                                1,      #-- item.3.6 = Selected by default
-        "QuickLaunch Widget", "Bliss Home Screen Widget with clock and shortcuts",                                 1,      #-- item.3.7 = Selected by default
-        "Trends Widget",      "Show current trends topic on your Home Screen",                                     1,      #-- item.3.8 = Selected by default
-	    "Genie Widget",       "Show News/Weather Widget on Home screen",                                           0,      #-- item.3.9 = Un-Selected by default
+	  "Widgets",                       "",                                         2,  #-- Group 1. key = "item.1.x"
+	    "CalendarStock",               "<b>Stock/AOSP Calendar</b>",               1,      #-- item.1. = Selected by default
+      "FMRadio",                     "<b>Stock/AOSP FM Radio</b>",               1,      #-- item.1. = Selected by default
+      "ExchangeStock",               "<b>Stock/AOSP Exchange Services</b>",      1,      #-- item.1. = Selected by default
+      "DashClock",                   "<b>DashClock Widget</b>",                  1,      #-- item.1. = Selected by default
+      "CMWallpapers",                "<b>CyanogenMod Wallpapers</b>",            1,      #-- item.1. = Selected by default
+      "CMUpdater",                   "<b>CyanogenMod Updater</b>",               1,      #-- item.1. = Selected by default
+	    "CMSetupWizard",               "<b>CyanogenMod Setup Wizard</b>",          1,      #-- item.1. = Selected by default
 
-	  "Skins",                "",                                                                                  2,  #-- Group 4. key = "item.4.x"
-	    "HTC Skins",          "BlueSky and Burgundy skins",                                                        1,      #-- item.4.1 = Selected by default
-        "More Skins",         "HoneyHD and IceHD Skins",                                                           0       #-- item43.2 = Un-Selected by default
+	  "Live Wallpaper",                "",                                         2,  #-- Group 1. key = "item.1.x"
+	    "BasicDreams",                 "<b>Basic Dreams Live Wallpaper</b>",       1,      #-- item.1. = Selected by default
+      "Galaxy",                      "<b>Galaxy Live Wallpaper</b>",             1,      #-- item.1. = Selected by default
+      "HoloSpiral",                  "<b>Holo Spiral Live Wallpaper</b>",        1,      #-- item.1. = Selected by default
+      "LiveWallpapers",              "<b>Live Wallpapers</b>",                   1,      #-- item.1. = Selected by default
+      "NoiseField",                  "<b>NoiseField Live Wallpaper</b>",         1,      #-- item.1. = Selected by default
+      "Phasebeam",                   "<b>Phasebeam Live Wallpaper</b>",          1,      #-- item.1. = Selected by default
+      "PhotoPhase",                  "<b>PhotoPhase Live Wallpaper</b>",         1,      #-- item.1. = Selected by default
+      "PhotoTable",                  "<b>PhotoTable Live Wallpaper</b>",         1,      #-- item.1. = Selected by default
+      "VisualizationWallpapers",     "<b>Visualization Live Wallpaper</b>",      1      #-- item.1. = Selected by default
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );
@@ -329,7 +288,7 @@ ini_set("icon_next", "@installbutton");
 
 ###############################################################################
 #
-# STEP 9 - MAKE SURE USER KNOW THAT NEXT STEP WAS INSTALLATION PROCESS
+# MAKE SURE USER KNOW THAT NEXT STEP WAS INSTALLATION PROCESS
 #
 ###############################################################################
 
@@ -359,7 +318,7 @@ restotmp("exec_demo/sleep","sleep");
 
 ###############################################################################
 #
-# STEP 10 - INSTALLATION PROCESS
+# INSTALLATION PROCESS
 #
 ###############################################################################
 
