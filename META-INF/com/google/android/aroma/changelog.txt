@@ -1,3 +1,21 @@
+<b><#selectbg_g>0.6 - 2016-03-22</#></b>
+<*>Added fixes in aroma-config</*>
+<*>Alpha release</*>
+
+<b><#selectbg_g>0.5 - 2016-03-21</#></b>
+<*>Added fixes in aroma-config</*>
+
+<b><#selectbg_g>0.4.2 - 2016-03-19</#></b>
+<*>Added fixes in aroma-config</*>
+
+<b><#selectbg_g>0.4.1 - 2016-03-19</#></b>
+<*>Added fixes in aroma-config</*>
+<*>Added fixes in updater-script</*>
+
+<b><#selectbg_g>0.4 - 2016-03-19</#></b>
+<*>Added fixes in aroma-config</*>
+<*>Added fixes in updater-script</*>
+
 <b><#selectbg_g>0.3 - 2016-03-18</#></b>
 <*>Added fixes in aroma-config</*>
 <*>Added fixes in updater-script</*>

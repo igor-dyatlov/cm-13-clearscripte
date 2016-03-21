@@ -31,10 +31,10 @@ theme("material_green");
 ###############################################################################
 
 ini_set("rom_name",             "Nexusfication");
-ini_set("rom_version",          "0.3");
+ini_set("rom_version",          "0.6");
 ini_set("rom_author",           "Igor Dyatlov");
 ini_set("rom_device",           "Nexus Device");
-ini_set("rom_date",             "Mar, 18 2016");
+ini_set("rom_date",             "Mar, 22 2016");
 
 
 ###############################################################################
@@ -217,8 +217,7 @@ if (prop("menu.prop","selected")!="3") then
       "Customize Your Installation",
 
     #-- Sub Title
-      "Select the program or mod features you want to installed.\n"+
-	  "Select an item in the list below to change how a feature is installed.",
+      "Choose apps which you want to remove",
 
     #-- Icon: <AROMA Resource Dir>/icons/personalize.png or <ThemeDir>/icon.personalize.png
       "@personalize",
@@ -230,49 +229,61 @@ if (prop("menu.prop","selected")!="3") then
 	  # TITLE            |  SUBTITLE                                                                           | Initial Value #
 	  #------------------+-------------------------------------------------------------------------------------+---------------#
 
-	  "Applications",                  "Choose apps which you want to remove",     2,  #-- Group 1. key = "item.1.x"
-	    "Browser",                     "<b>Stock/AOSP Browser</b>",                1,      #-- item.1.2 = Selected by default
-		  "CameraStock",                 "<b>Stock/AOSP/Moto Camera</b>",            1,      #-- item.1.5 = Selected by default
-	    "ClockStock",                  "<b>Stock/AOSP Clock</b>",                  1,      #-- item.1. = Selected by default
-	    "CMMusic",                     "<b>CyanogenMod Music</b>",                 1,      #-- item.1. = Selected by default
-      "Email",                       "<b>Stock/AOSP Email</b>",                  1,      #-- item.1. = Selected by default
-      "Gallery",                     "<b>Stock/AOSP Gallery</b>",                1,      #-- item.1. = Selected by default
-      "KeyboardStock",               "<b>Stock/AOSP Keyboard</b>",               1,      #-- item.1. = Selected by default
-      "Launcher",                    "<b>Stock/AOSP Launcher(s)</b>",            1,      #-- item.1. = Selected by default
+	  "Applications Stock",            "",                                         2,  #-- Group 1. key = "item.1.x"
+	    "Browser",                     "<b>Stock/AOSP Browser</b>",                1,      #-- item.1.1 = Selected by default
+		  "CameraStock",                 "<b>Stock/AOSP/Moto Camera</b>",            1,      #-- item.1.2 = Selected by default
+	    "ClockStock",                  "<b>Stock/AOSP Clock</b>",                  1,      #-- item.1.3 = Selected by default
+      "ContactStock",                "<b>Stock/AOSP Contact</b>",                1,      #-- item.1.4 = Selected by default
+      "Dialer",                      "<b>Stock/AOSP Dialer</b>",                 1,      #-- item.1.5 = Selected by default
+      "Email",                       "<b>Stock/AOSP Email</b>",                  1,      #-- item.1.6 = Selected by default
+      "Gallery",                     "<b>Stock/AOSP Gallery</b>",                1,      #-- item.1.7 = Selected by default
+      "KeyboardStock",               "<b>Stock/AOSP Keyboard</b>",               1,      #-- item.1.8 = Selected by default
+      "Launcher",                    "<b>Stock/AOSP Launcher(s)</b>",            1,      #-- item.1.9 = Selected by default
+      "MMS",                         "<b>Stock/AOSP MMS</b>",                    1,      #-- item.1.10 = Selected by default
 
-	  "Tools & File Manager",          "",                                         2,  #-- Group 1. key = "item.1.x"
-	    "CMFileManager",               "<b>CyanogenMod File Manager</b>",          1,      #-- item.1. = Selected by default
-      "LockClock",                   "<b>Lock Clock</b>",                        1,      #-- item.1. = Selected by default
-      "MMS",                         "<b>Stock/AOSP MMS</b>",                    1,      #-- item.1. = Selected by default
-		  "CMAudioFX",                   "<b>CyanogenMod AudioFX</b>",               1,      #-- item.1. = Selected by default
-      "PicoTTS",                     "<b>Stock/AOSP Text-to-Speech</b>",         1,      #-- item.1. = Selected by default
-      "Provision",                   "<b>Provision application</b>",             1,      #-- item.1. = Selected by default
-      "SimToolKit",                  "<b>Stock/AOSP Sim ToolKit</b>",            1,      #-- item.1. = Selected by default
-      "Studio",                      "<b>Stock/AOSP Movie Studio</b>",           1,      #-- item.1. = Selected by default
-      "SykoPath",                    "<b>SykoPath Layers Manager</b>",           1,      #-- item.1. = Selected by default
-      "Terminal",                    "<b>Terminal</b>",                          1,      #-- item.1. = Selected by default
-      "Themes",                      "<b>CyanogenMod Theme Engine</b>",          1,      #-- item.1. = Selected by default
-      "WhisperPush",                 "<b>WhisperPush</b>",                       1,      #-- item.1. = Selected by default
+    "CyanogenMod apps",              "",                                         2,  #-- Group 2. key = "item.2.x"
+      "CMAccount",                   "<b>CyanogenMod Account</b>",               1,      #-- item.2.1 = Selected by default
+      "CMAudioFX",                   "<b>CyanogenMod AudioFX</b>",               0,      #-- item.2.2 = Selected by default
+      "CMBugReport",                 "<b>CyanogenMod Bug Report</b>",            1,      #-- item.2.3 = Selected by default
+      "CMFileManager",               "<b>CyanogenMod File Manager</b>",          1,      #-- item.2.4 = Selected by default
+      "CMMusic",                     "<b>CyanogenMod Music</b>",                 1,      #-- item.2.5 = Selected by default
+      "CMSetupWizard",               "<b>CyanogenMod Setup Wizard</b>",          0,      #-- item.2.6 = Selected by default
+      "Themes",                      "<b>CyanogenMod Theme Engine</b>",          0,      #-- item.2.7 = Selected by default
+      "CMWallpapers",                "<b>CyanogenMod Wallpapers</b>",            1,      #-- item.2.8 = Selected by default
+      "CMUpdater",                   "<b>CyanogenMod Updater</b>",               0,      #-- item.2.9 = Selected by default
 
-	  "Widgets",                       "",                                         2,  #-- Group 1. key = "item.1.x"
-	    "CalendarStock",               "<b>Stock/AOSP Calendar</b>",               1,      #-- item.1. = Selected by default
-      "FMRadio",                     "<b>Stock/AOSP FM Radio</b>",               1,      #-- item.1. = Selected by default
-      "ExchangeStock",               "<b>Stock/AOSP Exchange Services</b>",      1,      #-- item.1. = Selected by default
-      "DashClock",                   "<b>DashClock Widget</b>",                  1,      #-- item.1. = Selected by default
-      "CMWallpapers",                "<b>CyanogenMod Wallpapers</b>",            1,      #-- item.1. = Selected by default
-      "CMUpdater",                   "<b>CyanogenMod Updater</b>",               1,      #-- item.1. = Selected by default
-	    "CMSetupWizard",               "<b>CyanogenMod Setup Wizard</b>",          1,      #-- item.1. = Selected by default
+	  "Tools Stock",                   "",                                         2,  #-- Group 1. key = "item.1.x"
+      "LockClock",                   "<b>Lock Clock</b>",                        1,      #-- item.3.1 = Selected by default
+      "CalculatorStock",             "<b>Stock/AOSP Calculator</b>",             1,      #-- item.3.2 = Selected by default
+      "Development",                 "<b>Stock/AOSP Development</b>",            1,      #-- item.3.3 = Selected by default
+      "PicoTTS",                     "<b>Stock/AOSP Text-to-Speech</b>",         1,      #-- item.3.4 = Selected by default
+      "Provision",                   "<b>Provision application</b>",             1,      #-- item.3.5 = Selected by default
+      "SimToolKit",                  "<b>Stock/AOSP Sim ToolKit</b>",            1,      #-- item.3.6 = Selected by default
+      "Studio",                      "<b>Stock/AOSP Movie Studio</b>",           1,      #-- item.3.7 = Selected by default
+      "SykoPath",                    "<b>SykoPath Layers Manager</b>",           1,      #-- item.3.8 = Selected by default
+      "Tag",                         "<b>Tag Manager</b>",                       0,      #-- item.3.9 = Selected by default
+      "Terminal",                    "<b>Terminal</b>",                          0,      #-- item.3.10 = Selected by default
+      "WhisperPush",                 "<b>WhisperPush</b>",                       1,      #-- item.3.11 = Selected by default
+
+	  "Widgets Stock",                       "",                                         2,  #-- Group 1. key = "item.1.x"
+	    "CalendarStock",               "<b>Stock/AOSP Calendar</b>",               1,      #-- item.4.1 = Selected by default
+      "FMRadio",                     "<b>Stock/AOSP FM Radio</b>",               1,      #-- item.4.2 = Selected by default
+      "ExchangeStock",               "<b>Stock/AOSP Exchange Services</b>",      1,      #-- item.4.3 = Selected by default
+      "DashClock",                   "<b>DashClock Widget</b>",                  1,      #-- item.4.4 = Selected by default
+      "WallpaperCropper",            "<b>Wallpaper Cropper</b>",                 1,      #-- item.4.5 = Selected by default
+      "WAPPushManager",              "<b>WAPPushManager</b>",                    1,      #-- item.4.6 = Selected by default
+      "WebView",                     "<b>WebView Widget</b>",                    1,      #-- item.4.7 = Selected by default
 
 	  "Live Wallpaper",                "",                                         2,  #-- Group 1. key = "item.1.x"
-	    "BasicDreams",                 "<b>Basic Dreams Live Wallpaper</b>",       1,      #-- item.1. = Selected by default
-      "Galaxy",                      "<b>Galaxy Live Wallpaper</b>",             1,      #-- item.1. = Selected by default
-      "HoloSpiral",                  "<b>Holo Spiral Live Wallpaper</b>",        1,      #-- item.1. = Selected by default
-      "LiveWallpapers",              "<b>Live Wallpapers</b>",                   1,      #-- item.1. = Selected by default
-      "NoiseField",                  "<b>NoiseField Live Wallpaper</b>",         1,      #-- item.1. = Selected by default
-      "Phasebeam",                   "<b>Phasebeam Live Wallpaper</b>",          1,      #-- item.1. = Selected by default
-      "PhotoPhase",                  "<b>PhotoPhase Live Wallpaper</b>",         1,      #-- item.1. = Selected by default
-      "PhotoTable",                  "<b>PhotoTable Live Wallpaper</b>",         1,      #-- item.1. = Selected by default
-      "VisualizationWallpapers",     "<b>Visualization Live Wallpaper</b>",      1      #-- item.1. = Selected by default
+	    "BasicDreams",                 "<b>Basic Dreams Live Wallpaper</b>",       1,      #-- item.5.1 = Selected by default
+      "Galaxy",                      "<b>Galaxy Live Wallpaper</b>",             1,      #-- item.5.2 = Selected by default
+      "HoloSpiral",                  "<b>Holo Spiral Live Wallpaper</b>",        1,      #-- item.5.3 = Selected by default
+      "LiveWallpapers",              "<b>Live Wallpapers</b>",                   1,      #-- item.5.4 = Selected by default
+      "NoiseField",                  "<b>NoiseField Live Wallpaper</b>",         1,      #-- item.5.5 = Selected by default
+      "Phasebeam",                   "<b>Phasebeam Live Wallpaper</b>",          1,      #-- item.5.6 = Selected by default
+      "PhotoPhase",                  "<b>PhotoPhase Live Wallpaper</b>",         1,      #-- item.5.7 = Selected by default
+      "PhotoTable",                  "<b>PhotoTable Live Wallpaper</b>",         1,      #-- item.5.8 = Selected by default
+      "VisualizationWallpapers",     "<b>Visualization Live Wallpaper</b>",      1       #-- item.5.9 = Selected by default
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );

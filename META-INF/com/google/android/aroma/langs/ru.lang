@@ -28,7 +28,7 @@ text_next=Далее
 text_back=Назад
 text_yes=Да
 text_no=Нет
-text_about=About
+text_about=Справка
 text_calibrating=Калибровка
 text_quit=Покинуть установку
 text_quit_msg=Вы действительно хотите покинуть установку?
@@ -65,5 +65,5 @@ terms.desc=Пожалуйста внимательно прочитайте ус
 terms.check=Я согласен с правилами использования...
 terms.confirm=Пожалуйста ознакомьтесь с соглашением...
 
-changelog.title=Changelog
+changelog.title=Список изменений
 changelog.desc=AROMA Installer Changelog
