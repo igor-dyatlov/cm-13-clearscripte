@@ -21,9 +21,9 @@ fontresload("1", "ttf/Roboto-Regular.ttf", "14");
 theme("material_green");
 
 # INITIALIZING ROM INFOMATION
-ini_set("rom_name",             "");
-ini_set("rom_version",          "0.8.1");
-ini_set("rom_author",           "");
+ini_set("rom_name",             "Nexusfication");
+ini_set("rom_version",          "0.8.3");
+ini_set("rom_author",           "Igor Dyatlov");
 ini_set("rom_device",           "Nexus Device");
 ini_set("rom_date",             "Mar, 27 2016");
 

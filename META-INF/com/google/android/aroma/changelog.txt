@@ -1,3 +1,9 @@
+<b><#selectbg_g>0.8.3 - 2016-03-27</#></b>
+<*>Added fixes in updater-script</*>
+
+<b><#selectbg_g>0.8.2 - 2016-03-27</#></b>
+<*>Added fixes in aroma-config</*>
+
 <b><#selectbg_g>0.8.1 - 2016-03-27</#></b>
 <*>Remove unused languages</*>
 <*>Remove splash anim</*>
