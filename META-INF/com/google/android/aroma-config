@@ -14,280 +14,158 @@
 # limitations under the License.
 #
 
-###############################################################################
-#
 # SETTING THEME & FONT
-#
-###############################################################################
-
+ini_set("force_colorspace","rgba");
 fontresload("0", "ttf/Roboto-Regular.ttf", "12");
 fontresload("1", "ttf/Roboto-Regular.ttf", "14");
 theme("material_green");
 
-###############################################################################
-#
 # INITIALIZING ROM INFOMATION
-#
-###############################################################################
-
-ini_set("rom_name",             "Nexusfication");
-ini_set("rom_version",          "0.6");
-ini_set("rom_author",           "Igor Dyatlov");
+ini_set("rom_name",             "");
+ini_set("rom_version",          "0.8.1");
+ini_set("rom_author",           "");
 ini_set("rom_device",           "Nexus Device");
-ini_set("rom_date",             "Mar, 22 2016");
+ini_set("rom_date",             "Mar, 27 2016");
 
-
-###############################################################################
-#
 # SHOW SIMPLE SPLASH
-#
-###############################################################################
-
 splash(
-#  #-- Duration 2000ms / 2 seconds
     2000,
-
-  #-- <AROMA Resource Dir>/sample.png
     "sample"
 );
 
-###############################################################################
-#
-# SHOW ANIMATED SPLASH
-#
-###############################################################################
-
-anisplash(
-#  #-- Number of Loop
-    4,
-
-  #-- Frame 1 [ Image, duration in millisecond ]. <AROMA Resource Dir>/splash/a[1..6].png
-    "splash/a1", 500,
-    "splash/a2", 30,
-    "splash/a3", 30,
-    "splash/a4", 30,
-    "splash/a5", 30,
-    "splash/a6", 30
-);
-
-###############################################################################
-#
 # LANGUAGE SELECTION
-#
-###############################################################################
-
 include("language_select.edify");
 
-###############################################################################
-#
-# SHOW ROM INFORMATION
-#
-###############################################################################
+# MENU POSITION
+gotolabel("aroma_menubox");
 
-viewbox(
-  #-- Title
-    "<~welcome.title>",
-
-  #-- Text
-    "<~welcome.text1> <b>"+
-	  #-- Get Config Value
-	  ini_get("rom_name")+
-	"</b> <~common.for> <b>"+ini_get("rom_device")+"</b>.\n\n"+
-
-    "<~welcome.text2>\n\n"+
-
-      "  <~welcome.version>\t: <b><#selectbg_g>"+ini_get("rom_version")+"</#></b>\n"+
-      "  <~welcome.codename>\t\t: <b><#selectbg_g>Flamboyan Beta</#></b>\n"+
-      "  <~welcome.updated>\t\t: <b><#selectbg_g>"+ini_get("rom_date")+"</#></b>\n\n\n"+
-
-    "<~welcome.next>",
-
-  #-- Icon
-    "@welcome"
-);
-
-###############################################################################
-#
 # SHOW MENUBOX
-#
-###############################################################################
-
 menubox(
-  #-- Title
     "Installation Type",
-
-  #-- Sub Title
     "Choose the installation type that best suits your needs.",
-
-  #-- Icon
     "@install",
-
-  #-- Will be saved in /tmp/aroma/menu.prop
     "menu.prop",
 
   #-------------------------+-----------------[ Menubox Items ]-------------------------+---------------#
   # TITLE                   |  SUBTITLE                                                 |   Item Icons  #
   #-------------------------+-----------------------------------------------------------+---------------#
+  "Chdfd",              "Select fkfd",                           "@install"      #-- selected.1 = 1
+	  #"Change Boot Animation",              "Select Boot Animation",                           "@install",      #-- selected.1 = 1
+    #"Change Sound",                       "Select Sound",                                    "@default",      #-- selected.1 = 2
+    #"Removing unused applications",       "All recommended features will be installed",      "@default"      #-- selected.1 = 3
 
-	  "Change Boot Animation",          "Select Boot Animation",                           "@install",      #-- selected = 1
-    "Change Sound",                   "Select Sound",                                    "@default",      #-- selected = 2
-    "Select boot",                    "All recommended features will be installed",      "@default"       #-- selected = 3
 );
 
-
-###############################################################################
-#
 # SELECT BOOTANIMATION
-#
-###############################################################################
-
-if (prop("menu.prop","selected")!="1") then
-
+if (prop("menu.prop","selected")=="1") then
   selectbox(
-    #-- Title
-      "Select Boot Animation",
-
-    #-- Sub Title
+      "Select Boot Change Boot Animation",
       "Please select <b><#selectbg_g>"+sysprop("ro.product.device")+"</#></b>\n installer :",
-
-    #-- Icon: <AROMA Resource Dir>/icons/default.png or <ThemeDir>/icon.default.png
       "@default",
-
-    #-- Will be saved in /tmp/aroma/bootamimation".prop
       "bootamimation.prop",
 
 	  #-----------------------------------[ Selectbox With Groups ]----------------------------------#
 	  # TITLE            |  SUBTITLE                                                 | Initial Value #
 	  #------------------+-----------------------------------------------------------+---------------#
 
-      "Boot Animation",             "",                                                            2,   #-- Group 2. key = "selected.1"
-	    "Default Nexus 5",            "Default Nexus S Android boot animation",                      0,      #-- selected.1 = 1
-		  "Default Nexus 7",            "AROMA Earthquake logo boot animation",                        0,      #-- selected.1 = 2
-		  "Default Gaxaly Nexus",       "Generic white HTC Quitely Briliant boot animation",           0,      #-- selected.1 = 3
-      "No Change",                  "This option does not change Boot Animation",                  1
+      "Boot Animation",             "",                                                      2,
+	    "Default Nexus 5",            "Default Nexus 5 Android boot animation",                0,      #-- selected = 1
+		  "Default Nexus 7",            "Default Nexus 7 Android boot animation",                0,      #-- selected = 2
+		  "Default Gaxaly Nexus",       "Default Gaxaly Nexus Android boot animation",           0,      #-- selected = 3
+      "No Change",                  "This option does not change Boot Animation",            1       #-- selected = 4
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );
-endif;
+# endif;
 
-###############################################################################
-#
 # SELECT SOUND
-#
-###############################################################################
-
-if (prop("menu.prop","selected")!="2") then
-
+#if (prop("menu.prop","selected")=="2") then
   selectbox(
-    #-- Title
       "Select Sound",
-
-    #-- Sub Title
-      "Please select installer :",
-
-    #-- Icon: <AROMA Resource Dir>/icons/default.png or <ThemeDir>/icon.default.png
+      "Please select Change Sound :",
       "@default",
-
-    #-- Will be saved in /tmp/aroma/sound".prop
       "sound.prop",
 
 	  #-----------------------------------[ Selectbox With Groups ]----------------------------------#
 	  # TITLE            |  SUBTITLE                                                 | Initial Value #
 	  #------------------+-----------------------------------------------------------+---------------#
 
-      "Sound Stock",                "",                                                            2,   #-- Group 2. key = "selected.1"
-	    "Default Nexus 5",            "Default Nexus S Android boot animation",                      0,      #-- selected.1 = 1
-      "No Change",                  "This option does not change Boot Animation",                  1
+      "Sound Stock",                "",                                                          2,
+	    "Default Nexus 5",            "Default Nexus S Android boot animation",                    0,      #-- selected = 1
+      "No Change",                  "This option does not Boot Sound situation",                 1       #-- selected = 2
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );
-endif;
+#endif;
 
-
-###############################################################################
-#
 # CUSTOMIZE YOUR INSTALLATION
-#
-###############################################################################
-
-if (prop("menu.prop","selected")!="3") then
-
+#if (prop("menu.prop","selected")=="3") then
   checkbox(
-    #-- Title
-      "Customize Your Installation",
-
-    #-- Sub Title
+      "Removing unused applications",
       "Choose apps which you want to remove",
-
-    #-- Icon: <AROMA Resource Dir>/icons/personalize.png or <ThemeDir>/icon.personalize.png
       "@personalize",
-
-    #-- Will be saved in /tmp/aroma/delete.prop
       "delete.prop",
 
 	  #------------------------------------------------[ Checkbox Without Group ]----------------------------------------------#
 	  # TITLE            |  SUBTITLE                                                                           | Initial Value #
 	  #------------------+-------------------------------------------------------------------------------------+---------------#
 
-	  "Applications Stock",            "",                                         2,  #-- Group 1. key = "item.1.x"
-	    "Browser",                     "<b>Stock/AOSP Browser</b>",                1,      #-- item.1.1 = Selected by default
-		  "CameraStock",                 "<b>Stock/AOSP/Moto Camera</b>",            1,      #-- item.1.2 = Selected by default
-	    "ClockStock",                  "<b>Stock/AOSP Clock</b>",                  1,      #-- item.1.3 = Selected by default
-      "ContactStock",                "<b>Stock/AOSP Contact</b>",                1,      #-- item.1.4 = Selected by default
-      "Dialer",                      "<b>Stock/AOSP Dialer</b>",                 1,      #-- item.1.5 = Selected by default
-      "Email",                       "<b>Stock/AOSP Email</b>",                  1,      #-- item.1.6 = Selected by default
-      "Gallery",                     "<b>Stock/AOSP Gallery</b>",                1,      #-- item.1.7 = Selected by default
-      "KeyboardStock",               "<b>Stock/AOSP Keyboard</b>",               1,      #-- item.1.8 = Selected by default
-      "Launcher",                    "<b>Stock/AOSP Launcher(s)</b>",            1,      #-- item.1.9 = Selected by default
-      "MMS",                         "<b>Stock/AOSP MMS</b>",                    1,      #-- item.1.10 = Selected by default
-
-    "CyanogenMod apps",              "",                                         2,  #-- Group 2. key = "item.2.x"
-      "CMAccount",                   "<b>CyanogenMod Account</b>",               1,      #-- item.2.1 = Selected by default
-      "CMAudioFX",                   "<b>CyanogenMod AudioFX</b>",               0,      #-- item.2.2 = Selected by default
-      "CMBugReport",                 "<b>CyanogenMod Bug Report</b>",            1,      #-- item.2.3 = Selected by default
-      "CMFileManager",               "<b>CyanogenMod File Manager</b>",          1,      #-- item.2.4 = Selected by default
-      "CMMusic",                     "<b>CyanogenMod Music</b>",                 1,      #-- item.2.5 = Selected by default
-      "CMSetupWizard",               "<b>CyanogenMod Setup Wizard</b>",          0,      #-- item.2.6 = Selected by default
-      "Themes",                      "<b>CyanogenMod Theme Engine</b>",          0,      #-- item.2.7 = Selected by default
-      "CMWallpapers",                "<b>CyanogenMod Wallpapers</b>",            1,      #-- item.2.8 = Selected by default
-      "CMUpdater",                   "<b>CyanogenMod Updater</b>",               0,      #-- item.2.9 = Selected by default
-
-	  "Tools Stock",                   "",                                         2,  #-- Group 1. key = "item.1.x"
-      "LockClock",                   "<b>Lock Clock</b>",                        1,      #-- item.3.1 = Selected by default
-      "CalculatorStock",             "<b>Stock/AOSP Calculator</b>",             1,      #-- item.3.2 = Selected by default
-      "Development",                 "<b>Stock/AOSP Development</b>",            1,      #-- item.3.3 = Selected by default
-      "PicoTTS",                     "<b>Stock/AOSP Text-to-Speech</b>",         1,      #-- item.3.4 = Selected by default
-      "Provision",                   "<b>Provision application</b>",             1,      #-- item.3.5 = Selected by default
-      "SimToolKit",                  "<b>Stock/AOSP Sim ToolKit</b>",            1,      #-- item.3.6 = Selected by default
-      "Studio",                      "<b>Stock/AOSP Movie Studio</b>",           1,      #-- item.3.7 = Selected by default
-      "SykoPath",                    "<b>SykoPath Layers Manager</b>",           1,      #-- item.3.8 = Selected by default
-      "Tag",                         "<b>Tag Manager</b>",                       0,      #-- item.3.9 = Selected by default
-      "Terminal",                    "<b>Terminal</b>",                          0,      #-- item.3.10 = Selected by default
-      "WhisperPush",                 "<b>WhisperPush</b>",                       1,      #-- item.3.11 = Selected by default
-
-	  "Widgets Stock",                       "",                                         2,  #-- Group 1. key = "item.1.x"
-	    "CalendarStock",               "<b>Stock/AOSP Calendar</b>",               1,      #-- item.4.1 = Selected by default
-      "FMRadio",                     "<b>Stock/AOSP FM Radio</b>",               1,      #-- item.4.2 = Selected by default
-      "ExchangeStock",               "<b>Stock/AOSP Exchange Services</b>",      1,      #-- item.4.3 = Selected by default
-      "DashClock",                   "<b>DashClock Widget</b>",                  1,      #-- item.4.4 = Selected by default
-      "WallpaperCropper",            "<b>Wallpaper Cropper</b>",                 1,      #-- item.4.5 = Selected by default
-      "WAPPushManager",              "<b>WAPPushManager</b>",                    1,      #-- item.4.6 = Selected by default
-      "WebView",                     "<b>WebView Widget</b>",                    1,      #-- item.4.7 = Selected by default
-
-	  "Live Wallpaper",                "",                                         2,  #-- Group 1. key = "item.1.x"
-	    "BasicDreams",                 "<b>Basic Dreams Live Wallpaper</b>",       1,      #-- item.5.1 = Selected by default
-      "Galaxy",                      "<b>Galaxy Live Wallpaper</b>",             1,      #-- item.5.2 = Selected by default
-      "HoloSpiral",                  "<b>Holo Spiral Live Wallpaper</b>",        1,      #-- item.5.3 = Selected by default
-      "LiveWallpapers",              "<b>Live Wallpapers</b>",                   1,      #-- item.5.4 = Selected by default
-      "NoiseField",                  "<b>NoiseField Live Wallpaper</b>",         1,      #-- item.5.5 = Selected by default
-      "Phasebeam",                   "<b>Phasebeam Live Wallpaper</b>",          1,      #-- item.5.6 = Selected by default
-      "PhotoPhase",                  "<b>PhotoPhase Live Wallpaper</b>",         1,      #-- item.5.7 = Selected by default
-      "PhotoTable",                  "<b>PhotoTable Live Wallpaper</b>",         1,      #-- item.5.8 = Selected by default
-      "VisualizationWallpapers",     "<b>Visualization Live Wallpaper</b>",      1       #-- item.5.9 = Selected by default
+	  "Applications Stock",            "",                                         2,      #-- Group 1. key = "item.1.x"
+	    "Browser",                     "<b>Stock/AOSP Browser</b>",                1,      #-- item.1.1
+		  "CameraStock",                 "<b>Stock/AOSP/Moto Camera</b>",            1,      #-- item.1.2
+	    "ClockStock",                  "<b>Stock/AOSP Clock</b>",                  1,      #-- item.1.3
+      "ContactStock",                "<b>Stock/AOSP Contact</b>",                1,      #-- item.1.4
+      "Dialer",                      "<b>Stock/AOSP Dialer</b>",                 1,      #-- item.1.5
+      "Email",                       "<b>Stock/AOSP Email</b>",                  1,      #-- item.1.6
+      "Gallery",                     "<b>Stock/AOSP Gallery</b>",                1,      #-- item.1.7
+      "KeyboardStock",               "<b>Stock/AOSP Keyboard</b>",               1,      #-- item.1.8
+      "Launcher",                    "<b>Stock/AOSP Launcher(s)</b>",            1,      #-- item.1.9
+      "MMS",                         "<b>Stock/AOSP MMS</b>",                    1,      #-- item.1.10
+    "CyanogenMod apps",              "",                                         2,      #-- Group 2. key = "item.2.x"
+      "CMAccount",                   "<b>CyanogenMod Account</b>",               1,      #-- item.2.1
+      "CMAudioFX",                   "<b>CyanogenMod AudioFX</b>",               0,      #-- item.2.2
+      "CMBugReport",                 "<b>CyanogenMod Bug Report</b>",            1,      #-- item.2.3
+      "CMFileManager",               "<b>CyanogenMod File Manager</b>",          1,      #-- item.2.4
+      "CMMusic",                     "<b>CyanogenMod Music</b>",                 1,      #-- item.2.5
+      "CMSetupWizard",               "<b>CyanogenMod Setup Wizard</b>",          0,      #-- item.2.6
+      "Themes",                      "<b>CyanogenMod Theme Engine</b>",          0,      #-- item.2.7
+      "CMWallpapers",                "<b>CyanogenMod Wallpapers</b>",            1,      #-- item.2.8
+      "CMUpdater",                   "<b>CyanogenMod Updater</b>",               0,      #-- item.2.9
+	  "Tools Stock",                   "",                                         2,      #-- Group 3. key = "item.3.x"
+      "LockClock",                   "<b>Lock Clock</b>",                        1,      #-- item.3.1
+      "CalculatorStock",             "<b>Stock/AOSP Calculator</b>",             1,      #-- item.3.2
+      "Development",                 "<b>Stock/AOSP Development</b>",            1,      #-- item.3.3
+      "PicoTTS",                     "<b>Stock/AOSP Text-to-Speech</b>",         1,      #-- item.3.4
+      "Provision",                   "<b>Provision application</b>",             1,      #-- item.3.5
+      "SimToolKit",                  "<b>Stock/AOSP Sim ToolKit</b>",            1,      #-- item.3.6
+      "Studio",                      "<b>Stock/AOSP Movie Studio</b>",           1,      #-- item.3.7
+      "SykoPath",                    "<b>SykoPath Layers Manager</b>",           1,      #-- item.3.8
+      "Tag",                         "<b>Tag Manager</b>",                       0,      #-- item.3.9
+      "Terminal",                    "<b>Terminal</b>",                          0,      #-- item.3.10
+      "WhisperPush",                 "<b>WhisperPush</b>",                       1,      #-- item.3.11
+	  "Widgets Stock",                 "",                                         2,      #-- Group 4. key = "item.4.x"
+	    "CalendarStock",               "<b>Stock/AOSP Calendar</b>",               1,      #-- item.4.1
+      "FMRadio",                     "<b>Stock/AOSP FM Radio</b>",               1,      #-- item.4.2
+      "ExchangeStock",               "<b>Stock/AOSP Exchange Services</b>",      1,      #-- item.4.3
+      "DashClock",                   "<b>DashClock Widget</b>",                  1,      #-- item.4.4
+      "WallpaperCropper",            "<b>Wallpaper Cropper</b>",                 1,      #-- item.4.5
+      "WAPPushManager",              "<b>WAPPushManager</b>",                    1,      #-- item.4.6
+      "WebView",                     "<b>WebView Widget</b>",                    1,      #-- item.4.7
+	  "Live Wallpaper",                "",                                         2,      #-- Group 5. key = "item.5.x"
+	    "BasicDreams",                 "<b>Basic Dreams Live Wallpaper</b>",       1,      #-- item.5.1
+      "Galaxy",                      "<b>Galaxy Live Wallpaper</b>",             1,      #-- item.5.2
+      "HoloSpiral",                  "<b>Holo Spiral Live Wallpaper</b>",        1,      #-- item.5.3
+      "LiveWallpapers",              "<b>Live Wallpapers</b>",                   1,      #-- item.5.4
+      "NoiseField",                  "<b>NoiseField Live Wallpaper</b>",         1,      #-- item.5.5
+      "Phasebeam",                   "<b>Phasebeam Live Wallpaper</b>",          1,      #-- item.5.6
+      "PhotoPhase",                  "<b>PhotoPhase Live Wallpaper</b>",         1,      #-- item.5.7
+      "PhotoTable",                  "<b>PhotoTable Live Wallpaper</b>",         1,      #-- item.5.8
+      "VisualizationWallpapers",     "<b>Visualization Live Wallpaper</b>",      1       #-- item.5.9
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );
 endif;
+
 
 
 ##
@@ -297,12 +175,10 @@ endif;
 ini_set("text_next", "Install Now");
 ini_set("icon_next", "@installbutton");
 
-###############################################################################
+###################################################################################################################
 #
-# MAKE SURE USER KNOW THAT NEXT STEP WAS INSTALLATION PROCESS
+# STEP 9 - MAKE SURE USER KNOW THAT NEXT STEP WAS INSTALLATION PROCESS
 #
-###############################################################################
-
 viewbox(
   #-- Title
     "Ready to Install",
@@ -327,25 +203,23 @@ ini_set("icon_next", "@next");
 restotmp("exec_demo/sleep","sleep");
 
 
-###############################################################################
+###################################################################################################################
 #
-# INSTALLATION PROCESS
+# STEP 10 - INSTALLATION PROCESS
 #
-###############################################################################
-
 setvar("retstatus",
   install(
 	#-- Title
       "Installing",
-
+	
 	#-- Installation Process message
 	  "<b>"+ini_get("rom_name")+"</b> are being installed.\n\n"+
       "Please wait while installation wizard installs <b>"+ini_get("rom_name")+
 	  "</b>. This may take several minutes.",
-
+	
 	#-- Installation Icon
       "@install",
-
+	
 	#-- Installation Finish Message
       "The installation wizard has successfully installed <b>"+ini_get("rom_name")+
 	  "</b>. Press Next to continue."
@@ -358,10 +232,10 @@ setvar("retstatus",
 checkviewbox(
   #-- Title
     "Post Installation",
-
+  
   #-- Text
     "Installation Finished. Do you want to go back to Demo Main Menu?",
-
+	
   #-- Icon
     "@welcome",
 
@@ -377,7 +251,7 @@ checkviewbox(
 if
   getvar("goto_mainmenu")=="1"
 then
-  goto("aroma_installer_demo_pos");
+  goto("aroma_menubox");
 endif;
 
 
@@ -389,12 +263,10 @@ endif;
 ini_set("text_next", "Finish");
 ini_set("icon_next", "@finish");
 
-###############################################################################
+###################################################################################################################
 #
-# FINISH MESSAGE
+# STEP 11 - FINISH MESSAGE, Add Checkbox to Reboot or No. Save in "reboot_it" variable
 #
-###############################################################################
-
 # You can use return value or "reboot_it" variable to retrive checkbox value
 # Example:
 # if (checkviewbox(....)=="1" then
@@ -404,12 +276,12 @@ ini_set("icon_next", "@finish");
 checkviewbox(
   #-- Title
     "Installation Completed",
-
+  
   #-- Text
     "<#selectbg_g><b>Congratulation...</b></#>\n\n"+
     "<b>"+ini_get("rom_name")+"</b> has been installed into your device.\n\n"+
     "Installer Status: "+getvar("retstatus")+"\n\n",
-
+	
   #-- Icon
     "@welcome",
 
@@ -436,3 +308,5 @@ then
   #
   reboot("onfinish");
 endif;
+
+#---- FINISH

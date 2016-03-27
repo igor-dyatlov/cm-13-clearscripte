@@ -1,18 +1,12 @@
 # Nexusfication
-Cleaning script for custom firmware. Replacing files ringtones, butanimatsii, configuration files on the stock of official images.
+Cleaning script for custom firmware. Replacing files ringtones, bootanimatsii, configuration files on the stock of official images.
 
 If you love Google services and custom firmware, then this script is for you. It removes preinstalled applications AOSP and Cyanogen applications and allows you to replace them with Gapps.
 
 
 ## Support devices
 - Galaxy Nexus
-- Nexus 4
-- Nexus 5
-- Nexus 6
-- Nexus 5x
-- Nexus 6p
 - Nexus 7
-- Nexus 9
 
 ## Description
 
