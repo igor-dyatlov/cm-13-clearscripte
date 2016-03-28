@@ -26,6 +26,8 @@ Run in the console:
 
  - Assemble and sign the file, run the script
 
+Run in the console:
+
     install.sh
 
 Or simply [download]() the finished file.     

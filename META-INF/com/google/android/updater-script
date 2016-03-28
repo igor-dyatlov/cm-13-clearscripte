@@ -6,9 +6,7 @@ ui_print(" ");
 ui_print("@  Removing unused applications...");
 ui_print(" Applications Stock Group");
 ui_print(" ");
-###############################################################################
-# Browser
-###############################################################################
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.1.1") == "1"
  then
@@ -21,9 +19,7 @@ ui_print(" ");
   delete_recursive("/system/priv-app/BLUOperaPreinstall");
   run_program("/tmp/aroma/sleep","300");
  endif;
-###############################################################################
-# Camera
-###############################################################################
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.1.2") == "1"
  then
@@ -44,113 +40,108 @@ ui_print(" ");
   delete("/system/lib/librsjni.so");
   run_program("/tmp/aroma/sleep","300");
  endif;
-###############################################################################
-# Clock
-###############################################################################
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.1.3") == "1"
  then
   ui_print("- Removing Clock");
   delete_recursive("/system/app/DeskClock");
   delete_recursive("/system/app/FineOSDeskClock");
+  run_program("/tmp/aroma/sleep","300");
  endif;
-###############################################################################
-# ContactStock
-###############################################################################
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.1.4") == "1"
  then
   ui_print("- Removing Contact");
   delete_recursive("/system/priv-app/Contacts");
   delete_recursive("/system/priv-app/FineOSContacts");
+  run_program("/tmp/aroma/sleep","300");
  endif;
-###############################################################################
-# Dialer
-###############################################################################
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.1.5") == "1"
  then
-  ui_print("@  Removing Dialer");
+  ui_print("- Removing Dialer");
   delete_recursive("/system/priv-app/Dialer");
   delete_recursive("/system/priv-app/FineOSDialer");
+  run_program("/tmp/aroma/sleep","300");
  endif;
-###############################################################################
-# Email
-###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.1.6") == "1"
-then
-ui_print("@  Removing Email");
-delete_recursive("/system/app/Email");
-delete_recursive("/system/app/PrebuiltEmailGoogle");
-endif;
-###############################################################################
-# Gallery
-###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.1.7") == "1"
-then
-ui_print("@  Removing Gallery");
-delete_recursive("/system/app/Gallery");
-delete_recursive("/system/priv-app/Gallery");
-delete_recursive("/system/app/Gallery2");
-delete_recursive("/system/priv-app/Gallery2");
-delete_recursive("/system/app/MotGallery");
-delete_recursive("/system/priv-app/MotGallery");
-delete_recursive("/system/app/MediaShortcuts");
-delete_recursive("/system/priv-app/MediaShortcuts");
-delete_recursive("/system/priv-app/FineOSGallery");
-endif;
-###############################################################################
+
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.1.6") == "1"
+ then
+  ui_print("- Removing Email");
+  delete_recursive("/system/app/Email");
+  delete_recursive("/system/app/PrebuiltEmailGoogle");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.1.7") == "1"
+ then
+  ui_print("@  Removing Gallery");
+  delete_recursive("/system/app/Gallery");
+  delete_recursive("/system/priv-app/Gallery");
+  delete_recursive("/system/app/Gallery2");
+  delete_recursive("/system/priv-app/Gallery2");
+  delete_recursive("/system/app/MotGallery");
+  delete_recursive("/system/priv-app/MotGallery");
+  delete_recursive("/system/app/MediaShortcuts");
+  delete_recursive("/system/priv-app/MediaShortcuts");
+  delete_recursive("/system/priv-app/FineOSGallery");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+
 # KeyboardStock
-###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.1.8") == "1"
-then
-ui_print("@  Removing KeyboardStock");
-delete_recursive("/system/app/LatinIME");
-delete_recursive("/system/priv-app/BLUTouchPal");
-delete_recursive("/system/priv-app/BLUTouchPalPortuguesebrPack");
-delete_recursive("/system/priv-app/BLUTouchPalSpanishLatinPack");
-delete("/system/lib/libjni_latinime.so");
-endif;
-###############################################################################
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.1.8") == "1"
+ then
+  ui_print("@  Removing KeyboardStock");
+  delete_recursive("/system/app/LatinIME");
+  delete_recursive("/system/priv-app/BLUTouchPal");
+  delete_recursive("/system/priv-app/BLUTouchPalPortuguesebrPack");
+  delete_recursive("/system/priv-app/BLUTouchPalSpanishLatinPack");
+  delete("/system/lib/libjni_latinime.so");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+
 # Launcher
-###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.1.9") == "1"
-then
-ui_print("@  Removing Launcher");
-delete_recursive("/system/app/CMHome");
-delete_recursive("/system/app/CustomLauncher3");
-delete_recursive("/system/app/Launcher2");
-delete_recursive("/system/app/Launcher3");
-delete_recursive("/system/app/LiquidLauncher");
-delete_recursive("/system/app/Paclauncher");
-delete_recursive("/system/app/SlimLauncher");
-delete_recursive("/system/app/Trebuchet");
-delete_recursive("/system/app/FineOSHome");
-delete_recursive("/system/priv-app/CMHome");
-delete_recursive("/system/priv-app/CustomLauncher3");
-delete_recursive("/system/priv-app/Launcher2");
-delete_recursive("/system/priv-app/Launcher3");
-delete_recursive("/system/priv-app/LiquidLauncher");
-delete_recursive("/system/priv-app/Paclauncher");
-delete_recursive("/system/priv-app/SlimLauncher");
-delete_recursive("/system/priv-app/Trebuchet");
-delete_recursive("/system/priv-app/Nox");
-endif;
-###############################################################################
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.1.9") == "1"
+ then
+  ui_print("@  Removing Launcher");
+  delete_recursive("/system/app/CMHome");
+  delete_recursive("/system/app/CustomLauncher3");
+  delete_recursive("/system/app/Launcher2");
+  delete_recursive("/system/app/Launcher3");
+  delete_recursive("/system/app/LiquidLauncher");
+  delete_recursive("/system/app/Paclauncher");
+  delete_recursive("/system/app/SlimLauncher");
+  delete_recursive("/system/app/Trebuchet");
+  delete_recursive("/system/app/FineOSHome");
+  delete_recursive("/system/priv-app/CMHome");
+  delete_recursive("/system/priv-app/CustomLauncher3");
+  delete_recursive("/system/priv-app/Launcher2");
+  delete_recursive("/system/priv-app/Launcher3");
+  delete_recursive("/system/priv-app/LiquidLauncher");
+  delete_recursive("/system/priv-app/Paclauncher");
+  delete_recursive("/system/priv-app/SlimLauncher");
+  delete_recursive("/system/priv-app/Trebuchet");
+  delete_recursive("/system/priv-app/Nox");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+
 # MMS
-###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.1.10") == "1"
-then
-ui_print("@  Removing MMS");
-delete_recursive("/system/app/messaging");
-delete_recursive("/system/priv-app/Mms");
-delete_recursive("/system/priv-app/FineOSMms");
-endif;
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.1.10") == "1"
+ then
+  ui_print("@  Removing MMS");
+  delete_recursive("/system/app/messaging");
+  delete_recursive("/system/priv-app/Mms");
+  delete_recursive("/system/priv-app/FineOSMms");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
 
 ui_print(" CyanogenMod apps Group");
 
@@ -232,12 +223,13 @@ endif;
 ###############################################################################
 # CMUpdater
 ###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.2.9") == "1"
-then
-ui_print("@  Removing CMUpdater");
-delete_recursive("/system/priv-app/CMUpdater");
-endif;
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.2.9") == "1"
+ then
+  ui_print("@  Removing CMUpdater");
+  delete_recursive("/system/priv-app/CMUpdater");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
 
 ###############################################################################
 #
@@ -498,73 +490,64 @@ endif;
 ###############################################################################
 # PhotoPhase
 ###############################################################################
-if
-file_getprop("/tmp/aroma/delete.prop","item.5.7") == "1"
-then
-ui_print("@  Removing PhotoPhase");
-delete_recursive("/system/app/PhotoPhase");
-endif;
-###############################################################################
-# PhotoTable
-###############################################################################
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.5.7") == "1"
+ then
+  ui_print("- Removing PhotoPhase");
+  delete_recursive("/system/app/PhotoPhase");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.5.8") == "1"
  then
-  ui_print("@  Removing PhotoTable");
+  ui_print("- Removing PhotoTable");
   delete_recursive("/system/app/PhotoTable");
+  run_program("/tmp/aroma/sleep","300");
  endif;
-###############################################################################
-# VisualizationWallpapers
-###############################################################################
+
  if
   file_getprop("/tmp/aroma/delete.prop","item.5.9") == "1"
  then
-  ui_print("@  Removing VisualizationWallpapers");
+  ui_print("- Removing VisualizationWallpapers");
   delete_recursive("/system/app/VisualizationWallpapers");
   run_program("/tmp/aroma/sleep","300");
  endif;
 
-
-
 ui_print("@ Installing Bootanimation...");
 ui_print(" ");
-# Nexus 5 Bootanimation
+
  if file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "1"
   then
-   ui_print("- Select animation to Nexus 5...");
+   ui_print("- Installing animation to Nexus 5...");
    delete("/system/media/bootanimation.zip");
    package_extract_file("system/hammerhead/media/bootanimation.zip", "/system/media");
    set_perm(0, 0, 0644, "/system/media/bootanimation.zip");
    run_program("/tmp/aroma/sleep","700");
  endif;
  
-###############################################################################
-# Nexus 7 Bootanimation
-###############################################################################
- if file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "2"
-  then
-   ui_print("@ Installing Bootanimation ...");
- 	 delete("/system/media/bootanimation.zip");
-   package_extract_file("system/flo/media/bootanimation.zip", "/system/media");
-   set_perm(0, 0, 0644, "/system/media/bootanimation.zip");
-   run_program("/tmp/aroma/sleep","700");
-  endif;
-###############################################################################
-# Galaxy Nexus Bootanimation
-###############################################################################
- if file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "3"
-  then
-   ui_print("@ Installing Bootanimation ...");
-   delete("/system/media/bootanimation.zip");
-   package_extract_file("system/maguro/media/bootanimation.zip", "/system/media");
-   set_perm(0, 0, 0644, "/system/media/bootanimation.zip");
-   run_program("/tmp/aroma/sleep","700");
+ if 
+  file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "2"
+ then
+  ui_print("- Installing animation to Nexus 7...");
+  delete("/system/media/bootanimation.zip");
+  package_extract_file("system/flo/media/bootanimation.zip", "/system/media");
+  set_perm(0, 0, 0644, "/system/media/bootanimation.zip");
+  run_program("/tmp/aroma/sleep","700");
+ endif;
+
+ if 
+  file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "3"
+ then
+  ui_print("- Installing animation to Galaxy Nexus...");
+  delete("/system/media/bootanimation.zip");
+  package_extract_file("system/maguro/media/bootanimation.zip", "/system/media");
+  set_perm(0, 0, 0644, "/system/media/bootanimation.zip");
+  run_program("/tmp/aroma/sleep","700");
  endif;
 
 ui_print("  Extracting Files");
-###############################################################################
-# Nexus 5 Sound Stock
-###############################################################################
+
  if file_getprop("/tmp/aroma-data/sound.prop","selected") == "1"
   then
    ui_print("@ Installing Sound Stock ...");
