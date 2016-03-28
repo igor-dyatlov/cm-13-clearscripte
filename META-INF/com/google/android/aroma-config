@@ -22,10 +22,10 @@ theme("material_green");
 
 # INITIALIZING ROM INFOMATION
 ini_set("rom_name",             "Nexusfication");
-ini_set("rom_version",          "0.8.3");
+ini_set("rom_version",          "0.9.1");
 ini_set("rom_author",           "Igor Dyatlov");
 ini_set("rom_device",           "Nexus Device");
-ini_set("rom_date",             "Mar, 27 2016");
+ini_set("rom_date",             "Mar, 28 2016");
 
 # SHOW SIMPLE SPLASH
 splash(
@@ -34,7 +34,40 @@ splash(
 );
 
 # LANGUAGE SELECTION
-include("language_select.edify");
+###############################################################################
+#
+# SHOW LANGUAGE SELECTION
+#
+###############################################################################
+
+selectbox(
+  "Select Language",
+  "Please select installer language that you want to use in this installation test:",
+  "@default",
+  "lang.prop",
+  #---------------------------------[ Selectbox Without Group ]----------------------------------#
+  # TITLE            |  SUBTITLE                                                 | Initial Value #
+  #------------------+-----------------------------------------------------------+---------------#
+    "English",            "Welcome to Installer",                                        1,      #-- selected.0 = 1
+    "Russian",            "Добро пожаловать в Installer",                               0      #-- selected.0 = 2
+  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
+);
+
+###############################################################################
+#
+# SET LANGUAGE & FONT FAMILY
+#
+###############################################################################
+
+if prop("lang.prop","selected.0")=="1" then
+  loadlang("langs/en.lang");
+endif;
+
+
+if prop("lang.prop","selected.0")=="2" then
+  loadlang("langs/ru.lang");
+endif;
+
 
 # MENU POSITION
 gotolabel("aroma_menubox");
@@ -92,7 +125,9 @@ if (prop("menu.prop","selected")=="1") then
 
       "Sound Stock",                "",                                                          2,
 	    "Default Nexus 5",            "Default Nexus S Android boot animation",                    0,      #-- selected = 1
-      "No Change",                  "This option does not Boot Sound situation",                 1       #-- selected = 2
+	    "Default Nexus 7",            "Default Nexus 7 Android boot animation",                0,      #-- selected = 2
+		  "Default Gaxaly Nexus",       "Default Gaxaly Nexus Android boot animation",           0,      #-- selected = 3
+      "No Change",                  "This option does not Boot Sound situation",                 1       #-- selected = 4
 
 	  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
   );
@@ -211,15 +246,15 @@ setvar("retstatus",
   install(
 	#-- Title
       "Installing",
-	
+
 	#-- Installation Process message
 	  "<b>"+ini_get("rom_name")+"</b> are being installed.\n\n"+
       "Please wait while installation wizard installs <b>"+ini_get("rom_name")+
 	  "</b>. This may take several minutes.",
-	
+
 	#-- Installation Icon
       "@install",
-	
+
 	#-- Installation Finish Message
       "The installation wizard has successfully installed <b>"+ini_get("rom_name")+
 	  "</b>. Press Next to continue."
@@ -232,10 +267,10 @@ setvar("retstatus",
 checkviewbox(
   #-- Title
     "Post Installation",
-  
+
   #-- Text
     "Installation Finished. Do you want to go back to Demo Main Menu?",
-	
+
   #-- Icon
     "@welcome",
 
@@ -276,12 +311,12 @@ ini_set("icon_next", "@finish");
 checkviewbox(
   #-- Title
     "Installation Completed",
-  
+
   #-- Text
     "<#selectbg_g><b>Congratulation...</b></#>\n\n"+
     "<b>"+ini_get("rom_name")+"</b> has been installed into your device.\n\n"+
     "Installer Status: "+getvar("retstatus")+"\n\n",
-	
+
   #-- Icon
     "@welcome",
 

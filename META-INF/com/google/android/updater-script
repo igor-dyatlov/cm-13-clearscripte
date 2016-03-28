@@ -1,5 +1,5 @@
 ui_print("@  Mounting system...");
-run_program("/sbin/busybox", "mount", "/system"); 
+run_program("/sbin/busybox", "mount", "/system");
 run_program("/tmp/aroma/sleep","500");
 ui_print(" ");
 ui_print(" ");
@@ -525,8 +525,8 @@ ui_print(" ");
    set_perm(0, 0, 0644, "/system/media/bootanimation.zip");
    run_program("/tmp/aroma/sleep","700");
  endif;
- 
- if 
+
+ if
   file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "2"
  then
   ui_print("- Installing animation to Nexus 7...");
@@ -536,7 +536,7 @@ ui_print(" ");
   run_program("/tmp/aroma/sleep","700");
  endif;
 
- if 
+ if
   file_getprop("/tmp/aroma-data/bootamimation.prop","selected") == "3"
  then
   ui_print("- Installing animation to Galaxy Nexus...");
@@ -546,16 +546,35 @@ ui_print(" ");
   run_program("/tmp/aroma/sleep","700");
  endif;
 
-ui_print("  Extracting Files");
-
- if file_getprop("/tmp/aroma-data/sound.prop","selected") == "1"
-  then
-   ui_print("@ Installing Sound Stock ...");
-   delete_recursive("/system/media/audio");
-   package_extract_dir("system/hammerhead/media/audio", "/system/media");
-   set_perm_recursive(0, 0, 0755, 0644, "/system/media/audio");
-   run_program("/tmp/aroma/sleep","700");
+ if
+  file_getprop("/tmp/aroma-data/sound.prop","selected") == "1"
+ then
+  ui_print("@ Installing Sound Stock ...");
+  delete_recursive("/system/media/audio");
+  package_extract_dir("system/hammerhead/media/audio", "/system/media");
+  set_perm_recursive(0, 0, 0755, 0644, "/system/media/audio");
+  run_program("/tmp/aroma/sleep","700");
  endif;
+
+ if
+  file_getprop("/tmp/aroma-data/sound.prop","selected") == "2"
+ then
+  ui_print("@ Installing Sound Stock ...");
+  delete_recursive("/system/media/audio");
+  package_extract_dir("system/flo/media/audio", "/system/media");
+  set_perm_recursive(0, 0, 0755, 0644, "/system/media/audio");
+  run_program("/tmp/aroma/sleep","700");
+ endif;
+ 
+ if
+  file_getprop("/tmp/aroma-data/sound.prop","selected") == "3"
+ then
+  ui_print("@ Installing Sound Stock ...");
+  delete_recursive("/system/media/audio");
+  package_extract_dir("system/maguro/media/audio", "/system/media");
+  set_perm_recursive(0, 0, 0755, 0644, "/system/media/audio");
+  run_program("/tmp/aroma/sleep","700");
+ endif;  
 
 ui_print("@  Unmounting system...");
 run_program("/sbin/busybox", "umount", "/system");
