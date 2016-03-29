@@ -153,6 +153,7 @@ file_getprop("/tmp/aroma/delete.prop","item.2.1") == "1"
 then
 ui_print("@  Removing CMAccount");
 delete_recursive("/system/priv-app/CMAccount");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMAudioFX
@@ -162,6 +163,7 @@ file_getprop("/tmp/aroma/delete.prop","item.2.2") == "1"
 then
 ui_print("@  Removing CMAudioFX");
 delete_recursive("/system/priv-app/AudioFX");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMBugReport
@@ -171,6 +173,7 @@ file_getprop("/tmp/aroma/delete.prop","item.2.3") == "1"
 then
 ui_print("@  Removing CMBugReport");
 delete_recursive("/system/priv-app/CMBugReport");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMFileManager
@@ -180,6 +183,7 @@ file_getprop("/tmp/aroma/delete.prop","item.2.4") == "1"
 then
 ui_print("@  Removing CMFileManager");
 delete_recursive("/system/app/CMFileManager");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMMusic
@@ -190,6 +194,7 @@ then
 ui_print("@  Removing CMMusic");
 delete_recursive("/system/app/Eleven");
 delete_recursive("/system/app/Music");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMSetupWizard
@@ -200,6 +205,7 @@ then
 ui_print("@  Removing CMSetupWizard");
 delete_recursive("/system/app/CyanogenSetupWizard");
 delete_recursive("/system/priv-app/CyanogenSetupWizard");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Themes
@@ -210,6 +216,7 @@ then
 ui_print("@  Removing Themes");
 delete_recursive("/system/priv-app/ThemeChooser");
 delete_recursive("/system/priv-app/ThemesProvider");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMWallpapers
@@ -219,6 +226,7 @@ file_getprop("/tmp/aroma/delete.prop","item.2.8") == "1"
 then
 ui_print("@  Removing CMWallpapers");
 delete_recursive("/system/app/CMWallpapers");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # CMUpdater
@@ -245,6 +253,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.1") == "1"
 then
 ui_print("@  Removing LockClock");
 delete_recursive("/system/app/LockClock");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Calculator
@@ -256,6 +265,7 @@ ui_print("@  Removing Calculator");
 delete_recursive("/system/app/Calculator");
 delete_recursive("/system/app/ExactCalculator");
 delete_recursive("/system/app/FineOSCalculator");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Development
@@ -265,6 +275,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.3") == "1"
 then
 ui_print("@  Removing Development");
 delete_recursive("/system/app/Development");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # PicoTTS
@@ -278,6 +289,7 @@ delete_recursive("/system/priv-app/PicoTts");
 delete("/system/lib/libttscompat.so");
 delete("/system/lib/libttspico.so");
 delete_recursive("/system/tts");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Provision
@@ -288,6 +300,7 @@ then
 ui_print("@  Removing Provision");
 delete_recursive("/system/app/Provision");
 delete_recursive("/system/priv-app/Provision");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # SimToolKit
@@ -297,6 +310,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.6") == "1"
 then
 ui_print("@  Removing SimToolKit");
 delete_recursive("/system/app/Stk");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Studio
@@ -306,6 +320,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.7") == "1"
 then
 ui_print("@  Removing Studio");
 delete_recursive("/system/app/VideoEditor");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # SykoPath
@@ -315,6 +330,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.8") == "1"
 then
 ui_print("@  Removing SykoPath");
 delete_recursive("/system/app/Layers");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Tag
@@ -324,6 +340,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.9") == "1"
 then
 ui_print("@  Removing Tag");
 delete_recursive("/system/priv-app/Tag");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # Terminal
@@ -333,6 +350,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.10") == "1"
 then
 ui_print("@  Removing Terminal");
 delete_recursive("/system/app/Terminal");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # WhisperPush
@@ -342,6 +360,7 @@ file_getprop("/tmp/aroma/delete.prop","item.3.11") == "1"
 then
 ui_print("@  Removing WhisperPush");
 delete_recursive("/system/app/WhisperPush");
+run_program("/tmp/aroma/sleep","300");
 endif;
 
 ###############################################################################
@@ -360,6 +379,7 @@ ui_print("@  Removing Calendar");
 delete_recursive("/system/app/Calendar");
 delete_recursive("/system/priv-app/Calendar");
 delete_recursive("/system/app/FineOSCalendar");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # FMRadio
@@ -371,6 +391,7 @@ ui_print("@  Removing FMRadio");
 delete_recursive("/system/app/FM2");
 delete_recursive("/system/app/FMRecord");
 delete_recursive("/system/priv-app/FMRadio");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # ExchangeStock
@@ -381,6 +402,7 @@ then
 ui_print("@  Removing Exchange");
 delete_recursive("/system/app/Exchange2");
 delete_recursive("/system/priv-app/Exchange2");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # DashClock
@@ -390,6 +412,7 @@ file_getprop("/tmp/aroma/delete.prop","item.4.4") == "1"
 then
 ui_print("@  Removing DashClock");
 delete_recursive("/system/app/DashClock");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # WallpaperCropper
@@ -399,6 +422,7 @@ file_getprop("/tmp/aroma/delete.prop","item.4.5") == "1"
 then
 ui_print("@  Removing WallpaperCropper");
 delete_recursive("/system/priv-app/WallpaperCropper");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # WAPPushManager
@@ -408,6 +432,7 @@ file_getprop("/tmp/aroma/delete.prop","item.4.6") == "1"
 then
 ui_print("@  Removing WAPPushManager");
 delete_recursive("/system/app/WAPPushManager");
+run_program("/tmp/aroma/sleep","300");
 endif;
 ###############################################################################
 # WebView
@@ -420,6 +445,7 @@ delete_recursive("/system/app/webview");
 delete_recursive("/system/app/WebView");
 delete("/system/lib/$WebView_lib_filename");
 delete("/system/lib64/$WebView_lib_filename");
+run_program("/tmp/aroma/sleep","300");
 endif;
 
 ###############################################################################
