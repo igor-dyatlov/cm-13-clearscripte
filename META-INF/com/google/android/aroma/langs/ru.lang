@@ -1,5 +1,4 @@
-﻿### LICENSE:
-#
+﻿#
 # Copyright (C) 2011 Ahmad Amarullah ( http://amarullz.com/ )
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-### LANGUAGE STRING RESOURCE FILE
-#
-#   Language  : English
-#   By        : amarullz
 #
 
 #
@@ -36,7 +30,9 @@ text_quit_msg=Вы действительно хотите покинуть ус
 #
 #-- CUSTOM STRING RESOURCE
 #
-common.for=for
+rom.author=
+rom.device=
+rom.date=
 
 langtest.title=Тестирование языков
 langtest.multiline=Этот текст расположен в langs/ru.lang\
@@ -67,3 +63,26 @@ terms.confirm=Пожалуйста ознакомьтесь с соглашен�
 
 changelog.title=Список изменений
 changelog.desc=AROMA Installer Changelog
+
+menu.title=
+menu.desc=Выберите тип установки, который наилучшим образом соответствует вашим потребностям
+menu.change=Без изменений
+menu.text2=
+
+change.bootamimation=Эта опция не меняет загрузочную анимацию
+change.sound=Этот параметр не изменяет звуки
+
+bootamimation.title=Изменение загрузочной анимации
+bootamimation.desc=Пожалуйста выберите свое устройство
+bootamimation.group=Загрузочноя анимация
+bootamimation.text2=
+
+sound.title=Замена звукового оформления
+sound.desc=Выберите свое устройство
+sound.group=Стандартные звуки
+sound.text2=
+
+delete.title=Удаление неиспользуемых приложений
+delete.desc=Выберите приложения, которые вы хотите удалить
+delete.text1=
+delete.text2=

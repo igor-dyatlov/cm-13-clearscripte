@@ -14,11 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-### LANGUAGE STRING RESOURCE FILE
-#
-#   Language  : English
-#   By        : amarullz
-#
 
 #
 #--- COMMON SYSTEM STRING RESOURCE
@@ -67,3 +62,26 @@ terms.confirm=Please check the agreement...
 
 changelog.title=Changelog
 changelog.desc=AROMA Installer Changelog
+
+menu.title=Installation
+menu.desc=Choose the installation type that best suits your needs
+menu.change=No Change
+menu.text2=
+
+change.bootamimation=This option does not change Boot Animation
+change.sound=This option does not change sound
+
+bootamimation.title=Changing boot animation
+bootamimation.desc=Please select your device "+sysprop("ro.product.device")"
+bootamimation.group=Boot Animation
+bootamimation.text2=
+
+sound.title=Changing sound effects
+sound.desc=Please select your device "+sysprop("ro.product.device")"
+sound.group=Default sounds
+sound.text2=
+
+delete.title=Removing unused applications
+delete.desc=Choose apps which you want to remove
+delete.text1=
+delete.text2=
