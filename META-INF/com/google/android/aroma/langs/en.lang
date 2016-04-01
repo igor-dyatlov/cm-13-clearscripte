@@ -68,6 +68,10 @@ menu.desc=Choose the installation type that best suits your needs
 menu.change=No Change
 menu.text2=
 
+installation.title=Post Installation
+installation.desc=Installation Finished. Do you want to go back to Main Menu?
+installation.change=Back To Main Menu
+
 change.bootamimation=This option does not change Boot Animation
 change.sound=This option does not change sound
 
@@ -75,13 +79,23 @@ bootamimation.title=Changing boot animation
 bootamimation.desc=Please select your device "+sysprop("ro.product.device")"
 bootamimation.group=Boot Animation
 bootamimation.text2=
+bootamimation.hammerhead=Default Nexus 5 Android boot animation
+bootamimation.flo=Default Nexus 7 Android boot animation
+bootamimation.maguro=Default Gaxaly Nexus Android boot animation
 
 sound.title=Changing sound effects
 sound.desc=Please select your device "+sysprop("ro.product.device")"
 sound.group=Default sounds
 sound.text2=
+sound.hammerhead=Default Nexus 5 Android stock sound
+sound.flo=Default Nexus 7 Android stock sound
+sound.maguro=Default Gaxaly Nexus Android stock sound
 
 delete.title=Removing unused applications
 delete.desc=Choose apps which you want to remove
 delete.text1=
 delete.text2=
+
+nexus.hammerhead=Default Nexus 5
+nexus.flo=Default Nexus 7
+nexus.maguro=Default Gaxaly Nexus

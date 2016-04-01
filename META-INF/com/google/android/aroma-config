@@ -34,66 +34,55 @@ splash(
 );
 
 # LANGUAGE SELECTION
-selectbox(
+ selectbox(
   "Select Language",
   "Please select installer language that you want to use in this installation test:",
   "@default",
   "lang.prop",
 
-    "English",            "Welcome to Installer",                        1,     #-- selected.0 = 1
-    "Russian",            "Добро пожаловать в Installer",                0      #-- selected.0 = 2
-);
-
+    "English", "Welcome to Installer", 1,
+    "Russian", "Добро пожаловать в Installer", 0
+ );
 # SET LANGUAGE & FONT FAMILY
 if prop("lang.prop","selected.0")=="1" then
   loadlang("langs/en.lang");
 endif;
-
 if prop("lang.prop","selected.0")=="2" then
   loadlang("langs/ru.lang");
 endif;
 
-# MENU POSITION
 gotolabel("aroma_menubox");
-
-# SHOW MENUBOX
-menubox(
-    "Installation Type",
-    "Choose the installation type that best suits your needs.",
-    "@install",
-    "menu.prop",
-
-    "Nexusfication",              "Select fkfd",                           "@install"      #-- selected.1 = 1
-);
+ menubox(
+  "Installation Type",
+  "Choose the installation type that best suits your needs.",
+  "@install",
+  "menu.prop",
+   "Nexusfication", "Select fkfd", "@install"
+ );
 
 if (prop("menu.prop","selected")=="1") then
-# SELECT BOOTANIMATION
  selectbox(
   "<~bootamimation.title>",
   "<~bootamimation.desc>",
   "@default",
   "bootamimation.prop",
-   
    "<~bootamimation.group>", "", 2,
-	"Default Nexus 5", "Default Nexus 5 Android boot animation", 0,      #-- selected = 1
-	"Default Nexus 7", "Default Nexus 7 Android boot animation", 0,      #-- selected = 2
-	"Default Gaxaly Nexus", "Default Gaxaly Nexus Android boot animation", 0,      #-- selected = 3
-    "<~menu.change>", "<~change.bootamimation>", 1       #-- selected = 4
+	 "<~nexus.hammerhead>", "<~bootamimation.hammerhead>", 0,
+	 "<~nexus.flo>", "<~bootamimation.flo>", 0,
+	 "<~nexus.maguro>", "<~bootamimation.maguro>", 0,
+   "<~menu.change>", "<~change.bootamimation>", 1
  );
-# SELECT SOUND
  selectbox(
   "<~sound.title>",
   "<~sound.desc>",
   "@default",
   "sound.prop",
-   
    "<~sound.group>", "", 2,
-	"Default Nexus 5", "Default Nexus 5 Android stock sound", 0,      #-- selected = 1
-	"Default Nexus 7", "Default Nexus 7 Android stock sound", 0,      #-- selected = 2
-	"Default Gaxaly Nexus", "Default Gaxaly Nexus Android stock sound", 0,      #-- selected = 3
-    "<~menu.change>", "<~change.sound>", 1       #-- selected = 4
+	 "<~nexus.hammerhead>", "<~sound.hammerhead>", 0,
+	 "<~nexus.flo>", "<~sound.flo>", 0,
+	 "<~nexus.maguro>", "<~sound.maguro>", 0,
+   "<~menu.change>", "<~change.sound>", 1
  );
-# CUSTOMIZE YOUR INSTALLATION
  checkbox(
   "<~delete.title>",
   "<~delete.desc>",
@@ -150,7 +139,7 @@ if (prop("menu.prop","selected")=="1") then
       "PhotoPhase",                  "<b>PhotoPhase Live Wallpaper</b>",         1,      #-- item.5.7
       "PhotoTable",                  "<b>PhotoTable Live Wallpaper</b>",         1,      #-- item.5.8
       "VisualizationWallpapers",     "<b>Visualization Live Wallpaper</b>",      1       #-- item.5.9
-  );
+ );
 endif;
 
 # INSTALLATION UI
@@ -188,20 +177,17 @@ setvar("retstatus",
   )
 );
 
-# ASK TO BACK
 checkviewbox(
-    "Post Installation",
-    "Installation Finished. Do you want to go back to Demo Main Menu?",
-    "@welcome",
-    "Back To Demo Main Menu.",
-    "1",
-    "goto_mainmenu"
-);
-if
+ "<~installation.title>",
+ "<~installation.desc>",
+ "@welcome",
+  "<~installation.change>", "1", "goto_mainmenu"
+ );
+ if
   getvar("goto_mainmenu")=="1"
-then
+ then
   goto("aroma_menubox");
-endif;
+ endif;
 
 # BUTTON FINISH
 ini_set("text_next", "Finish");
