@@ -16,6 +16,6 @@
 # limitations under the License.
 #
 
-zip -r temp META-INF system
-java -jar ./certificates/signapk.jar ./certificates/testkey.x509.pem ./certificates/testkey.pk8 temp.zip nexusfication-clearscripte-$(date +%F-%H-%M).zip
+zip -r temp flo hammerhead maguro META-INF
+java -jar ./certificates/signapk.jar ./certificates/testkey.x509.pem ./certificates/testkey.pk8 temp.zip nexusfication-clearscripte-1.0-aroma-$(date +%F-%H-%M).zip
 rm temp.zip
