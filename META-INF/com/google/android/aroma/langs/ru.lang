@@ -49,8 +49,8 @@ themes.title=Выберите тему
 themes.desc=Пожалуйста выберите тему которую вы хотите использовать в этом установочном тесте:
 
 welcome.title=Добро пожаловать
-welcome.text1=Вы собираетесь установить
-welcome.text2=AROMA Installer это первый и единственный в мире установщик прошивок для ANDROID с сенсорным управлением и тонкой настройкой.
+welcome.desc=Вы собираетесь установить
+welcome.info=Информация
 welcome.version=ВЕРСИЯ
 welcome.codename=КОДОВОЕ ИМЯ
 welcome.updated=ОБНОВЛЕНО

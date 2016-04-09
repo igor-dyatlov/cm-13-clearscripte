@@ -48,8 +48,8 @@ themes.title=Select Theme
 themes.desc=Please select installer theme that you want to use in this installation test:
 
 welcome.title=Welcome
-welcome.text1=You are about to Installing
-welcome.text2=AROMA Installer was the first and the only Touch and Customizable ANDROID ROM Installer in the World.
+welcome.desc=You are about to Installing
+welcome.info=MOD Information
 welcome.version=VERSION
 welcome.codename=CODENAME
 welcome.updated=UPDATED
