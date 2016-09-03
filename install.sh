@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Copyright (C) 2016 
+# Copyright (C) 2016
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,6 @@
 # limitations under the License.
 #
 
-zip -r temp flo hammerhead maguro META-INF
-java -jar ./certificates/signapk.jar ./certificates/testkey.x509.pem ./certificates/testkey.pk8 temp.zip nexusfication-clearscripte-1.0-aroma-$(date +%F-%H-%M).zip
+zip -r temp bullhead flo hammerhead maguro META-INF
+java -jar ./certificates/signapk.jar ./certificates/testkey.x509.pem ./certificates/testkey.pk8 temp.zip nexusfication-clearscripte-1.1.0-aroma-$(date +%F-%H-%M).zip
 rm temp.zip

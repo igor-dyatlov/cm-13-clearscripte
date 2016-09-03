@@ -19,10 +19,10 @@ fontresload("0", "ttf/Roboto-Regular.ttf", "12");
 fontresload("1", "ttf/Roboto-Regular.ttf", "14");
 theme("material_green");
 ini_set("rom_name",             "Nexusfication");
-ini_set("rom_version",          "1.0");
+ini_set("rom_version",          "1.1.0");
 ini_set("rom_author",           "Igor Dyatlov");
 ini_set("rom_device", sysprop("ro.product.model"));
-ini_set("rom_date",             "Apr, 4 2016");
+ini_set("rom_date",             "Sep, 4 2016");
  splash(
   2000, "sample"
  );
@@ -63,6 +63,7 @@ if (prop("menu.prop","selected")=="1") then
 	"<~nexus.hammerhead>", "<~bootamimation.hammerhead>", 0,
 	"<~nexus.flo>", "<~bootamimation.flo>", 0,
 	"<~nexus.maguro>", "<~bootamimation.maguro>", 0,
+  "<~nexus.bullhead>", "<~bootamimation.bullhead>", 0,
     "<~menu.change>", "<~change.bootamimation>", 1
  );
  selectbox(
@@ -74,6 +75,7 @@ if (prop("menu.prop","selected")=="1") then
 	"<~nexus.hammerhead>", "<~sound.hammerhead>", 0,
 	"<~nexus.flo>", "<~sound.flo>", 0,
 	"<~nexus.maguro>", "<~sound.maguro>", 0,
+  "<~nexus.bullhead>", "<~sound.bullhead>", 0,
     "<~menu.change>", "<~change.sound>", 1
  );
  checkbox(
@@ -91,46 +93,46 @@ if (prop("menu.prop","selected")=="1") then
     "Gallery", "<b>Stock/AOSP Gallery</b>", 1,
     "KeyboardStock", "<b>Stock/AOSP Keyboard</b>", 1,
     "Launcher", "<b>Stock/AOSP Launcher(s)</b>", 1,
-    "MMS", "<b>Stock/AOSP MMS</b>", 1,      
+    "MMS", "<b>Stock/AOSP MMS</b>", 1,
    "CyanogenMod apps", "", 2,
     "CMAccount", "<b>CyanogenMod Account</b>", 1,
     "CMAudioFX", "<b>CyanogenMod AudioFX</b>", 0,
-    "CMBugReport", "<b>CyanogenMod Bug Report</b>", 1,      
+    "CMBugReport", "<b>CyanogenMod Bug Report</b>", 1,
     "CMFileManager", "<b>CyanogenMod File Manager</b>",          1,
     "CMMusic", "<b>CyanogenMod Music</b>",                 1,
-    "CMSetupWizard", "<b>CyanogenMod Setup Wizard</b>", 0,      
-    "Themes", "<b>CyanogenMod Theme Engine</b>", 0,      
-    "CMWallpapers", "<b>CyanogenMod Wallpapers</b>", 1,      
-    "CMUpdater", "<b>CyanogenMod Updater</b>", 1,      
-   "Tools Stock", "", 2,      
-    "LockClock", "<b>Lock Clock</b>", 1,      
-    "CalculatorStock", "<b>Stock/AOSP Calculator</b>", 1,      
-    "Development", "<b>Stock/AOSP Development</b>", 1,      
-    "PicoTTS", "<b>Stock/AOSP Text-to-Speech</b>", 1,      
-    "Provision", "<b>Provision application</b>", 0,      
-    "SimToolKit", "<b>Stock/AOSP Sim ToolKit</b>", 1,      
-    "Studio", "<b>Stock/AOSP Movie Studio</b>", 1,      
-    "SykoPath", "<b>SykoPath Layers Manager</b>", 0,      
-    "Tag", "<b>Tag Manager</b>", 0,      
-    "Terminal", "<b>Terminal</b>", 0,      
-    "WhisperPush", "<b>WhisperPush</b>", 1,      
-   "Widgets Stock", "", 2,      
-    "CalendarStock", "<b>Stock/AOSP Calendar</b>", 1,       
-    "FMRadio", "<b>Stock/AOSP FM Radio</b>", 1,      
-    "ExchangeStock", "<b>Stock/AOSP Exchange Services</b>", 1,      
-    "DashClock", "<b>DashClock Widget</b>", 1,       
-    "WallpaperCropper", "<b>Wallpaper Cropper</b>", 1,       
-    "WAPPushManager", "<b>WAPPushManager</b>", 1,       
-    "WebView", "<b>WebView Widget</b>", 1,       
-   "Live Wallpaper", "", 2,      
-	"BasicDreams", "<b>Basic Dreams Live Wallpaper</b>", 1,       
-    "Galaxy", "<b>Galaxy Live Wallpaper</b>", 1,       
-    "HoloSpiral", "<b>Holo Spiral Live Wallpaper</b>", 1,       
-    "LiveWallpapers", "<b>Live Wallpapers</b>", 1,       
-    "NoiseField", "<b>NoiseField Live Wallpaper</b>", 1,       
-    "Phasebeam", "<b>Phasebeam Live Wallpaper</b>", 1,       
-    "PhotoPhase", "<b>PhotoPhase Live Wallpaper</b>", 1,       
-    "PhotoTable", "<b>PhotoTable Live Wallpaper</b>", 1,       
+    "CMSetupWizard", "<b>CyanogenMod Setup Wizard</b>", 0,
+    "Themes", "<b>CyanogenMod Theme Engine</b>", 0,
+    "CMWallpapers", "<b>CyanogenMod Wallpapers</b>", 1,
+    "CMUpdater", "<b>CyanogenMod Updater</b>", 1,
+   "Tools Stock", "", 2,
+    "LockClock", "<b>Lock Clock</b>", 1,
+    "CalculatorStock", "<b>Stock/AOSP Calculator</b>", 1,
+    "Development", "<b>Stock/AOSP Development</b>", 1,
+    "PicoTTS", "<b>Stock/AOSP Text-to-Speech</b>", 1,
+    "Provision", "<b>Provision application</b>", 0,
+    "SimToolKit", "<b>Stock/AOSP Sim ToolKit</b>", 1,
+    "Studio", "<b>Stock/AOSP Movie Studio</b>", 1,
+    "SykoPath", "<b>SykoPath Layers Manager</b>", 0,
+    "Tag", "<b>Tag Manager</b>", 0,
+    "Terminal", "<b>Terminal</b>", 0,
+    "WhisperPush", "<b>WhisperPush</b>", 1,
+   "Widgets Stock", "", 2,
+    "CalendarStock", "<b>Stock/AOSP Calendar</b>", 1,
+    "FMRadio", "<b>Stock/AOSP FM Radio</b>", 1,
+    "ExchangeStock", "<b>Stock/AOSP Exchange Services</b>", 1,
+    "DashClock", "<b>DashClock Widget</b>", 1,
+    "WallpaperCropper", "<b>Wallpaper Cropper</b>", 1,
+    "WAPPushManager", "<b>WAPPushManager</b>", 1,
+    "WebView", "<b>WebView Widget</b>", 1,
+   "Live Wallpaper", "", 2,
+	"BasicDreams", "<b>Basic Dreams Live Wallpaper</b>", 1,
+    "Galaxy", "<b>Galaxy Live Wallpaper</b>", 1,
+    "HoloSpiral", "<b>Holo Spiral Live Wallpaper</b>", 1,
+    "LiveWallpapers", "<b>Live Wallpapers</b>", 1,
+    "NoiseField", "<b>NoiseField Live Wallpaper</b>", 1,
+    "Phasebeam", "<b>Phasebeam Live Wallpaper</b>", 1,
+    "PhotoPhase", "<b>PhotoPhase Live Wallpaper</b>", 1,
+    "PhotoTable", "<b>PhotoTable Live Wallpaper</b>", 1,
     "VisualizationWallpapers", "<b>Visualization Live Wallpaper</b>", 1
  );
 endif;
@@ -281,4 +283,3 @@ if
 then
 	reboot("onfinish");
 endif;
-
