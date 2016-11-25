@@ -83,6 +83,8 @@ bootamimation.text2=
 bootamimation.hammerhead=Стандартная загрузочноя анимация Nexus 5
 bootamimation.flo=Стандартная загрузочноя анимация Nexus 7
 bootamimation.maguro=Стандартная загрузочноя анимация Galaxy Nexus
+bootamimation.sailfish=Стандартная загрузочноя анимация Pixel L
+bootamimation.marlin=Стандартная загрузочноя анимация Pixel XL
 
 sound.title=Замена звукового оформления
 sound.desc=Выберите свое устройство
@@ -91,6 +93,8 @@ sound.text2=
 sound.hammerhead=Стандартные звуки Nexus 5
 sound.flo=Стандартные звуки Nexus 7
 sound.maguro=Стандартные звуки Galaxy Nexus
+sound.sailfish=Стандартные звуки Pixel L
+sound.marlin=Стандартные звуки Pixel XL
 
 delete.title=Удаление неиспользуемых приложений
 delete.desc=Выберите приложения, которые вы хотите удалить
@@ -100,3 +104,5 @@ delete.text2=
 nexus.hammerhead=По умолчанию Nexus 5
 nexus.flo=По умолчанию Nexus 7
 nexus.maguro=По умолчанию Gaxaly Nexus
+pixel.sailfish=По умолчанию Pixel L
+pixel.marlin=По умолчанию Pixel XL

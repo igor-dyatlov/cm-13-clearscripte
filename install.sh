@@ -16,6 +16,6 @@
 # limitations under the License.
 #
 
-zip -r temp bullhead flo hammerhead maguro META-INF
-java -jar ./certificates/signapk.jar ./certificates/testkey.x509.pem ./certificates/testkey.pk8 temp.zip nexusfication-clearscripte-1.1.0-aroma-$(date +%F-%H-%M).zip
+zip -r temp bullhead flo hammerhead maguro sailfish META-INF
+java -jar ./certificates/signapk.jar ./certificates/testkey.x509.pem ./certificates/testkey.pk8 temp.zip pixelization-clearscripte-2.0.1-aroma-$(date +%F-%H-%M).zip
 rm temp.zip

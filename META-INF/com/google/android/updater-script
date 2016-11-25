@@ -3,10 +3,6 @@ ui_print("@  Mounting system...");
 ui_print(" ");
 set_progress(0.1);
 run_program("/sbin/busybox", "mount", "/system");
-#run_program("/sbin/mount", "/system");
-#mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
-#mount("ext4", "EMMC", "/dev/block/mmcblk0p28", "/data");
-#mount("ext4", "EMMC", "/dev/block/mmcblk0p27", "/cache");
 run_program("/tmp/aroma/sleep","500");
 set_progress(0.3);
 ui_print("@ Installing Bootanimation...");
@@ -38,6 +34,13 @@ ui_print("@ Installing Bootanimation...");
    ui_print("- Installing animation to Nexus 5X...");
    delete("/system/media/bootanimation.zip");
    package_extract_file("bullhead/bootanimation.zip", "/system/media/bootanimation.zip");
+   run_program("/tmp/aroma/sleep","300");
+ endif;
+ if file_getprop("/tmp/aroma-data/bootamimation.prop","selected.1") == "5"
+  then
+   ui_print("- Installing animation to Pixel L...");
+   delete("/system/media/bootanimation.zip");
+   package_extract_file("sailfish/bootanimation.zip", "/system/media/bootanimation.zip");
    run_program("/tmp/aroma/sleep","300");
  endif;
 set_progress(0.5);
@@ -85,6 +88,20 @@ ui_print("@  Installing Sound...");
   package_extract_dir("bullhead/notifications", "/system/media/audio/notifications");
   package_extract_dir("bullhead/ringtones", "/system/media/audio/ringtones");
   package_extract_dir("bullhead/ui", "/system/media/audio/ui");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+ if
+  file_getprop("/tmp/aroma-data/sound.prop","selected.1") == "5"
+ then
+  ui_print("- Installing sound stock to Pixel L...");
+  delete_recursive("/system/media/audio/alarms");
+  delete_recursive("/system/media/audio/notifications");
+  delete_recursive("/system/media/audio/ringtones");
+  delete_recursive("/system/media/audio/ui");
+  package_extract_dir("sailfish/alarms", "/system/media/audio/alarms");
+  package_extract_dir("sailfish/notifications", "/system/media/audio/notifications");
+  package_extract_dir("sailfish/ringtones", "/system/media/audio/ringtones");
+  package_extract_dir("sailfish/ui", "/system/media/audio/ui");
   run_program("/tmp/aroma/sleep","300");
  endif;
 set_progress(0.8);
@@ -364,6 +381,20 @@ ui_print("@  Removing unused applications...");
   run_program("/tmp/aroma/sleep","300");
  endif;
  if
+  file_getprop("/tmp/aroma/delete.prop","item.3.12") == "1"
+ then
+  ui_print("- Removing SoundRecorder");
+  delete_recursive("/system/app/SoundRecorder");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+ if
+  file_getprop("/tmp/aroma/delete.prop","item.3.13") == "1"
+ then
+  ui_print("- Removing HexoLibre");
+  delete_recursive("/system/app/HexoLibre");
+  run_program("/tmp/aroma/sleep","300");
+ endif;
+ if
   file_getprop("/tmp/aroma/delete.prop","item.4.1") == "1"
  then
   ui_print("- Removing Calendar");
@@ -487,14 +518,10 @@ ui_print(" ");
 ui_print("@ Cleaning up and setting metadata...");
 set_metadata("/system/media/bootanimation.zip", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/media/audio/alarms", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-  set_metadata_recursive("/system/media/audio/notifications", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-  set_metadata_recursive("/system/media/audio/ringtones", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-  set_metadata_recursive("/system/media/audio/ui", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/media/audio/notifications", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/media/audio/ringtones", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/media/audio/ui", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 ui_print(" ");
 ui_print("@ Unmounting system...");
 run_program("/sbin/busybox", "umount", "/system");
 set_progress(1);
-#sleep(1);
-#unmount("/system");
-#unmount("/data");
-#unmount("/cache");

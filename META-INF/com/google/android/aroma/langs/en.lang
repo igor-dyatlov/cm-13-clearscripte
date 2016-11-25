@@ -82,6 +82,8 @@ bootamimation.text2=
 bootamimation.hammerhead=Default Nexus 5 Android boot animation
 bootamimation.flo=Default Nexus 7 Android boot animation
 bootamimation.maguro=Default Gaxaly Nexus Android boot animation
+bootamimation.sailfish=Default Pixel L Android boot animation
+bootamimation.marlin=Default Pixel XL Android boot animation
 
 sound.title=Changing sound effects
 sound.desc=Please select your device "+sysprop("ro.product.device")"
@@ -90,6 +92,8 @@ sound.text2=
 sound.hammerhead=Default Nexus 5 Android stock sound
 sound.flo=Default Nexus 7 Android stock sound
 sound.maguro=Default Gaxaly Nexus Android stock sound
+sound.sailfish=Default Pixel L Android stock sound
+sound.marlin=Default Pixel XL Android stock sound
 
 delete.title=Removing unused applications
 delete.desc=Choose apps which you want to remove
@@ -99,3 +103,5 @@ delete.text2=
 nexus.hammerhead=Default Nexus 5
 nexus.flo=Default Nexus 7
 nexus.maguro=Default Gaxaly Nexus
+pixel.sailfish=Default Pixel L
+pixel.marlin=Default Pixel XL
