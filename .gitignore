@@ -1,2 +1,14 @@
 # Zip Files
 /*.zip
+
+# Ignore outputs
+outputs/*
+
+# Ignore kernel releases
+releases/*
+
+# Ignore openssl keys
+signapk/keys/*
+
+# Do not ignore dummy files
+!.dummyfile
